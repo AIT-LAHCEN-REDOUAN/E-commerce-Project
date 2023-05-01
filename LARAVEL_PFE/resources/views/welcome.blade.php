@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <h1>Hello</h1>
+  <a href="{{route('admin')}}">Admin DashBoard</a>
 </body>
 
 </html>

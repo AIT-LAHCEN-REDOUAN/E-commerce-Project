@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view("/","welcome");
+Route::view("/admin","admin")->name("admin");
