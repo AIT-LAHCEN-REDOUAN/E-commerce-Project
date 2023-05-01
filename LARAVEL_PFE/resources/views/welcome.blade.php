@@ -21,29 +21,7 @@
 </head>
 
 <body>
-    <table class="table">
-        <tr>
-        <th>title</th>
-        <th>prix</th>
-        <th>image</th>
-        <th>type</th>
-        <th>marque</th>
-</tr>
- @foreach($produit as $v)
-<tr>
-    <td>{{$v->title}}</td>
-    <td>{{$v->prix}}</td>
-    <td>
-      <img src="{{$v->image->image}}" alt="" width="100">
-    </td>
-    <td>{{$v->type->type}}</td>
-    <td>{{$v->marque->marque}}</td>
-</tr>
-
-
- @endforeach
-{{dd($produit)}}
-     </table>
+  <h1>Hello</h1>
 </body>
 
 </html>

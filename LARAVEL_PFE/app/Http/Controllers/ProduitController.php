@@ -12,10 +12,9 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
-    $produit=produit::all();
-    return response()->json($produit);
-   // return view('welcome',compact('produit'));
+    //$produit=produit::all();
+    //return response()->json($produit);
+        
     }
 
     /**
