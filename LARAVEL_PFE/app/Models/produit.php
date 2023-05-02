@@ -10,11 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class produit extends Model
 {
     use HasFactory;
+    protected $fillable=['id','title','prix','description','image_id','type_id','marque_id','promotion'];
+
+    public function categorie():BelongsTo{
+        return $this->belongsTo(categorie::class);
+    }
     public function type():BelongsTo{
         return $this->belongsTo(type::class);
     }
-    public function image():BelongsTo{
-        return $this->belongsTo(images::class);
+    public function images():HasMany{
+        return $this->HasMany(images::class);
     }
     public function marque():BelongsTo{
         return $this->belongsTo(marque::class);

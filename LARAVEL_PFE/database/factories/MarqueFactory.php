@@ -18,7 +18,8 @@ class MarqueFactory extends Factory
     {
         return [
             //
-            'marque'=>fake()->title()
+            'marque'=>fake()->title(),
+            'image'=>fake()->imageUrl()
         ];
     }
 }
