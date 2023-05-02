@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\categorie;
 use App\Models\images;
 use App\Models\marque;
 use App\Models\type;
@@ -27,8 +28,8 @@ class ProduitFactory extends Factory
             'title'=>fake()->title(),
             'prix'=>fake()->numberBetween(20,500),
             'description'=>fake()->text(200),
-            'image_id'=>images::all()->random()->id,
-            'type_id'=>type::all()->random()->id,
+            'categorie_id'=>categorie::all()->random()->id,
+            'type_id'=>categorie::all()->random()->id,
             'marque_id'=>marque::all()->random()->id,
         ];
     }

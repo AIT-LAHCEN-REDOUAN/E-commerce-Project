@@ -13,6 +13,8 @@ class MarqueController extends Controller
     public function index()
     {
         //
+        $marque=marque::all();
+        return response()->json($marque);
     }
 
     /**
