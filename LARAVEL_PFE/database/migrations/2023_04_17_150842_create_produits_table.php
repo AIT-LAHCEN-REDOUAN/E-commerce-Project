@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('prix');
             $table->string('description');
-            $table->unsignedBigInteger('image_id');
+            $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('marque_id');
-            $table->foreign('image_id')->on('images')->references('id')->onDelete('cascade');
+            $table->foreign('categorie_id')->on('categories')->references('id')->onDelete('cascade');
             $table->foreign('type_id')->on('types')->references('id')->onDelete('cascade');
             $table->foreign('marque_id')->on('marques')->references('id')->onDelete('cascade');
             $table->timestamps();
