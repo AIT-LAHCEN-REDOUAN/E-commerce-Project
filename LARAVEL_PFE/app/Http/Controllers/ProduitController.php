@@ -6,6 +6,7 @@ use App\Http\Resources\ProduitCollection;
 use App\Http\Resources\ProduitResource;
 use App\Models\produit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
 {
@@ -14,8 +15,15 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produit=produit::get();
-    return new ProduitCollection($produit) ;
+        
+        $min=produit::min('prix');
+       $max=produit::max('prix');
+        $produit=produit::all();
+        return response()->json([
+            'min' => $min,
+            'max' => $max,
+            'produit' => new ProduitCollection($produit)
+        ]);
         
     }
 
