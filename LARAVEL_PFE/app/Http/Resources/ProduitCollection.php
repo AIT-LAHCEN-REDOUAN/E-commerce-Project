@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\produit;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -15,7 +16,6 @@ class ProduitCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         $products = [];
-
         foreach($this->collection as $product) {
 
              array_push($products, [
@@ -27,7 +27,7 @@ class ProduitCollection extends ResourceCollection
                 'categorie_id'=>$product->categorie,
                 'type_id'=>$product->type,
                 'marque_id'=>$product->marque,
-                'promotion'=>$product->promotion
+                'promotion'=>$product->promotion,
             ]);
 
         }
