@@ -18,7 +18,9 @@ class CategorieFactory extends Factory
     {
         return [
             //
-            'categorie'=>fake()->randomElement(['categorie 1','categorie 2','categorie 3'])
+            'categorie'=>fake()->randomElement(['PC Portable Gamer','PC Portable Multimédia','Sac Ordinateur Portable'])
         ];
     }
 }
+
+

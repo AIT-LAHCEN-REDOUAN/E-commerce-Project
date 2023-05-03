@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProduitCollection;
 use App\Http\Resources\ProduitResource;
+use App\Models\categorie;
 use App\Models\produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,11 +47,21 @@ class ProduitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(produit $produit)
+    public function show($catg)
     {
         //
-        return new ProduitResource($produit);
+         $categorie_id=categorie::where('categorie',$catg)->first()->id;
+         $produit_categorie=produit::where('categorie_id',$categorie_id)->get();
+         $min=produit::where('categorie_id',$categorie_id)->min('prix');
+         $max=produit::where('categorie_id',$categorie_id)->max('prix');
+        return response()->json([
+             'min' => $min,
+             'max' => $max,
+            'produit' =>new ProduitCollection($produit_categorie)
+        ]);
     }
+   
+    
 
     /**
      * Show the form for editing the specified resource.
