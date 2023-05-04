@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('marques', function (Blueprint $table) {
             //
-            $table->string('image')->after('marque');
+            $table->string('image')->unique()->after('marque');
         });
     }
 
