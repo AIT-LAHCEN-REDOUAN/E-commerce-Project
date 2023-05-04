@@ -140,13 +140,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('categorie') }}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Les Categorie</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('add_categorie')}}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Une Categorie</p>
                 </a>
