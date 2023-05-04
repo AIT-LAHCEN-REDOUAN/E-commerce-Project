@@ -321,6 +321,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  @yield('content')
 
 
 
