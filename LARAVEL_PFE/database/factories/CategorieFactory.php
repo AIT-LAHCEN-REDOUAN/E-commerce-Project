@@ -18,7 +18,7 @@ class CategorieFactory extends Factory
     {
         return [
             //
-            'categorie'=>fake()->randomElement(['PC Portable Gamer','PC Portable Multimédia','Sac Ordinateur Portable'])
+            'categorie'=>fake()->randomElement(['PC Portable Gamer','PC Portable Multimédia','Sac Ordinateur Portable','Processeur','Carte Mere','Stockage','Alimentation PC','Refroidissement','Boitier Pc','Carte Graphique','Memoire vivre','Clavier','Souris','Tapis de souris','Accessoires streaming','Manettes','Volant PC','Ecran','Casque','Microphone','Webcam'])
         ];
     }
 }
