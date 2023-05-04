@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view("/","welcome");
+
 Route::view("/admin","admin")->name("admin");
 Route::view("/layout","layouts");
+Route::view("/dashboard","dashboard");
