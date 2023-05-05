@@ -1,4 +1,7 @@
 @extends('layouts')
+@section("title")
+   add categorie
+@endsection
 @section("content")
   <section class="content">
     <form action="" class="form form-control" method="">
