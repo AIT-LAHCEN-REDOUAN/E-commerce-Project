@@ -1,4 +1,7 @@
 @extends('layouts')
+@section("title")
+  Dashboard
+@endsection
 @section("content")
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

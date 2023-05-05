@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>@yield("title")</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -140,13 +140,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('categorie') }}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Afficher Les Categorie</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('add_categorie')}}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter Une Categorie</p>
                 </a>
@@ -321,7 +321,10 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-  @yield('content')
+  <main>
+    @yield('content')
+  </main>
+  
 
 
 
