@@ -18,7 +18,7 @@ Route::view("/admin","admin")->name("admin");
 Route::view("/layout","layouts");
 Route::view("/dashboard","dashboard");
 Route::view("/categorie","categorie/add");
-Route::view("/commande","commande/add");
+Route::view("/commande","commande/modifier");
 Route::view("/compte","compte/add");
 Route::view("/image","image/add");
 Route::view("/marque","marque/add");
