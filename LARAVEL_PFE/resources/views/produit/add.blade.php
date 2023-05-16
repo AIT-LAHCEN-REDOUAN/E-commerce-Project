@@ -80,22 +80,18 @@
           <textarea class="form-control" id="description" placeholder="Enter the product description" name="" id=""
               cols="30" rows="10"></textarea>
       </div>
-      <div class="form-group">
-          <label for="image-upload">Image</label>
-          <div id="image-upload" class="dropzone"></div>
-      </div>
+   
       <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <div>
+    <form method="post" action="" enctype="multipart/form-data" 
+    class="dropzone" id="dropzone">
+@csrf
+</form> 
+  </div>
       </div>
-          @push('scripts')
-            
-    
-          @endpush
-          @push('styles')
-              
-          @endpush
+     
             
               
-      
-      @endsection
+@endsection
       
