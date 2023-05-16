@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\categorie;
-use App\Models\type;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class TypeController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index($categorie)
+    public function index()
     {
         //
-        $cat=categorie::where('categorie',$categorie)->first()->id;
-        $type=type::where('categorie_id',$cat)->get();
-        return response()->json($type);
     }
 
     /**
@@ -33,12 +29,22 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         //
+        $message=new Message();
+        $message->nom=$request->nom;
+        $message->prenom=$request->prenom;
+        $message->email=$request->email;
+        $message->message=$request->message;
+        $message->save();
+        return response()->json([
+            'message'=>'message est envoyé'
+        ]);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(type $type)
+    public function show(Message $message)
     {
         //
     }
@@ -46,7 +52,7 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(type $type)
+    public function edit(Message $message)
     {
         //
     }
@@ -54,7 +60,7 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, type $type)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -62,7 +68,7 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(type $type)
+    public function destroy(Message $message)
     {
         //
     }
