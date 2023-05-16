@@ -1,6 +1,6 @@
 @extends('layouts')
 @section('title')
-    add Marque
+    add Commande
 @endsection
 @section('content')
     <div class="content-wrapper p-4">
@@ -66,16 +66,12 @@
             </div>
             <!-- ./col -->
         </div>
-        <form action="" method="">
-            <div class="form-group">
-                <label> Nom de la marque</label>
-                <input type="text" class="form-control" aria-describedby="marque" placeholder="Entrer Une marque">
-            </div>
-            <div class="form-group">
-                <label>image Link</label>
-                <input type="file" class="form-control" aria-describedby="image" placeholder="Entrer une image" />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label>Commande</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie"
+                placeholder="Entrer Un categorie">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 @endsection
