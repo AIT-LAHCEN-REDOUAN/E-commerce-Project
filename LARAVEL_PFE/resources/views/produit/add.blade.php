@@ -3,7 +3,7 @@
    add Produit
 @endsection
 @section("content")
-<div class="content-wrapper p-4" >
+<div class="content-wrapper p-4">
     <div class="row">
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -65,13 +65,37 @@
           </div>
         </div>
         <!-- ./col -->
+    </div>
+    <form action="" method="GET" enctype="multipart/form-data">
+      <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter the product title">
       </div>
-        <div class="form-group">
-          <label>categorie</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</div>
- 
-@endsection
+      <div class="form-group">
+          <label for="prix">Price</label>
+          <input type="text" class="form-control" id="prix" placeholder="Enter the product price">
+      </div>
+      <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" placeholder="Enter the product description" name="" id=""
+              cols="30" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+          <label for="image-upload">Image</label>
+          <div id="image-upload" class="dropzone"></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+      </div>
+          @push('scripts')
+            
+    
+          @endpush
+          @push('styles')
+              
+          @endpush
+            
+              
+      
+      @endsection
+      
