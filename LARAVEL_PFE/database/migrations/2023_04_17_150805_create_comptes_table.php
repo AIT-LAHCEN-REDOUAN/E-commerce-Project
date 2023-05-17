@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('comptes', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('name');
             $table->string('telephone');
             $table->string('adresse');
             $table->integer('code_postal');
             $table->string('pays');
             $table->string('region');
-            $table->unsignedBigInteger('user_email');
+            $table->string('user_email');
             $table->foreign('user_email')->on('users')->references('email')->onDelete('cascade');
             $table->timestamps();
         });

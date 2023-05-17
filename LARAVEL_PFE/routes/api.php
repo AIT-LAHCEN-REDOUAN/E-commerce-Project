@@ -29,4 +29,4 @@ Route::get('/type/{categorie}',[TypeController::class,'index']);
 Route::resource('/message',MessageController::class);
 Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
-
+Route::post('/compte',[UserController::class,'compte']);
