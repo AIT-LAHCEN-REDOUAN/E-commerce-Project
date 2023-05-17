@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('telephone');
             $table->string('adresse');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
+            $table->integer('code_postal');
+            $table->string('pays');
+            $table->string('region');
+            $table->unsignedBigInteger('user_email');
+            $table->foreign('user_email')->on('users')->references('email')->onDelete('cascade');
             $table->timestamps();
         });
     }
