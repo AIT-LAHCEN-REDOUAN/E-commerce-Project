@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,4 @@ Route::view("/marque","marque/add");
 Route::view("/produit","produit/add");
 Route::view("/type","type/add");
 Route::view("/user","user/add");
+// Route::get("/compte",[UserController::class,'compte']);

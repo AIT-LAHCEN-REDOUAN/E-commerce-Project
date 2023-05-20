@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\compte;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +36,7 @@ class UserController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
             return response()->json([
                 'status' => 200,
-                'username' => $user->name,
+                'user' => $user,
                 'token' => $token,
                 'message' => 'Registered Successfully'
 
@@ -67,7 +68,7 @@ class UserController extends Controller
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()->json([
                     'status'=>200,
-                    'username'=>$user->name,
+                    'user'=>$user,
                     'token'=>$token,
                     'message'=>'Logged In Successfully'
                 ]);
@@ -84,8 +85,57 @@ class UserController extends Controller
         ]);
     }
 
-    public function profile()
+    public function compte(Request $request)
     {
-        return response()->json(Auth()->user());
+       // return response()->json($request);
+       $validator=Validator::make($request->all(),[
+        'fullname'=>'required',
+        'phone'=>'required',
+        'address'=>'required',
+        'code_postal'=>'required',
+        'email'=>'required|email',
+        'pays'=>'required',
+        'region'=>'required',
+       ]);
+
+       if($validator->fails()){
+        return response()->json([
+            'validation_errors'=>$validator->messages()
+        ]);
+       }else{
+        
+                $compte=compte::where('user_email',$request->old_email)->first();
+        if(isset($compte->id)){
+                $user=User::where('email',$request->old_email)->first();
+                $user->email=$request->email;
+                $user->save();
+                $compte->name=$request->fullname;
+                $compte->telephone=$request->phone;
+                $compte->adresse=$request->address;
+                $compte->code_postal=$request->code_postal;
+                $compte->pays=$request->pays;
+                $compte->region=$request->region;
+                $compte->user_email=$request->email;
+                $compte->save();
+        }else{
+            $compte=compte::create([
+                'name'=>$request->fullname,
+                'telephone'=>$request->phone,
+                'adresse'=>$request->address,
+                'code_postal'=>$request->code_postal,
+                'pays'=>$request->pays,
+                'region'=>$request->region,
+                'user_email'=>$request->email
+            ]);
+        }
+
+        return response()->json([
+            'status'=>200,
+            'compte'=>$compte,
+            'message'=>'Saved Profile Successfully'
+        ]);
+       }
+
+
     }
 }
