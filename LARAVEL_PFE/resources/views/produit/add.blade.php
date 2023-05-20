@@ -1,4 +1,20 @@
 @extends('layouts')
+@section("style_css")
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <script>
+  Dropzone.options.myGreatDropzone = { // camelized version of the `id`
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    accept: function(file, done) {
+      if (file.name == "justinbieber.jpg") {
+        done("Naha, you don't.");
+      }
+      else { done(); }
+    }
+  };
+</script>
+@endsection
 @section("title")
    add Produit
 @endsection
@@ -82,16 +98,14 @@
       </div>
    
       <button type="submit" class="btn btn-primary">Submit</button>
+      <!--file upload-->
+      <form action="/target" class="dropzone" id="my-great-dropzone"></form>
+
+
   </form>
-  <div>
-    <form method="post" action="" enctype="multipart/form-data" 
-    class="dropzone" id="dropzone">
-@csrf
-</form> 
-  </div>
+  
       </div>
      
             
               
 @endsection
-      
