@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<<<<<<< HEAD
+    
+    @yield('style_css')
+=======
     <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -53,6 +57,7 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+>>>>>>> 4b20d956f108477b7d0bee310a8ef8b7bdd7d602
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

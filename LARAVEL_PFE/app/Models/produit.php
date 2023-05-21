@@ -24,4 +24,7 @@ class produit extends Model
     public function marque():BelongsTo{
         return $this->belongsTo(marque::class);
     }
+    public function paniers():HasMany{
+        return $this->hasMany(panier::class);
+    }
 }
