@@ -19,10 +19,11 @@ class ProduitResource extends JsonResource
             'title'=>$this->title,
             'prix'=>$this->prix,
             'description'=>$this->description,
-            'image_id'=>$this->image,
+            'image_id'=>$this->images,
+            'categorie_id'=>$this->categorie,
             'type_id'=>$this->type,
             'marque_id'=>$this->marque,
-            'promotion'=>$this->promotion
+            'promotion'=>$this->promotion,
         ];
     }
 }

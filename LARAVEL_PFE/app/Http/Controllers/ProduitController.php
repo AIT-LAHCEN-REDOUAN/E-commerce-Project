@@ -86,4 +86,11 @@ class ProduitController extends Controller
     {
         //
     }
+    public function detail($id){
+        $produit=produit::find($id);
+        return response()->json([
+            'status'=>200,
+            'produit'=>new ProduitResource($produit)
+        ]);
+    }
 }

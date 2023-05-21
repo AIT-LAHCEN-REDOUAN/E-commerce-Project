@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
@@ -24,9 +25,11 @@ Route::get('/profile',[UserController::class,'profile']);
 Route::get('/logout',[UserController::class,'logout']);
 });
 Route::resource('/produit',ProduitController::class);
+Route::get('/detail/{id}',[ProduitController::class,'detail']);
 Route::resource('/marque',MarqueController::class);
 Route::get('/type/{categorie}',[TypeController::class,'index']);
 Route::resource('/message',MessageController::class);
 Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::post('/compte',[UserController::class,'compte']);
+Route::resource('panier',PanierController::class);

@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('paniers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('prodtui_id');
-            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
-            $table->foreign('prodtui_id')->on('produits')->references('id')->onDelete('cascade');
+            $table->string('user_email');
+            $table->unsignedBigInteger('produit_id');
+            $table->integer('quantity')->default(0);
+            $table->float('total')->default(0);
+            $table->foreign('user_email')->on('users')->references('email')->onDelete('cascade');
+            $table->foreign('produit_id')->on('produits')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }
