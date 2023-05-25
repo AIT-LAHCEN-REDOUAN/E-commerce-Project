@@ -97,30 +97,30 @@
         <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the discount" name="price">
     </div>
     <div class="form-group">
-      <label for="prix">Categorie</label>
+      <label for="">Categorie</label>
       <select class="form-control">
-        <option></option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+        <option>--------Choose A category--------------</option>
+        @foreach ($categorie as $item)
+        <option>{{$item->categorie}}</option>
+      @endforeach
       </select>
   </div>
   <div class="form-group">
-    <label for="prix">Type</label>
+    <label for="">Type</label>
     <select class="form-control">
-      <option></option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
+      <option>--------------Choose A type----------------</option>
+       @foreach ($type as $item)
+       <option>{{$item->type}}</option> 
+       @endforeach
     </select>
 </div>
 <div class="form-group">
-  <label for="prix">Marque</label>
+  <label for="">Marque</label>
   <select class="form-control">
-    <option></option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
+    <option>---------------Choose A marque-------------------------</option>
+     @foreach ($marque as $item)
+     <option>{{$item->marque}}</option> 
+     @endforeach
   </select>
 </div>
       <div class="form-group">

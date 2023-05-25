@@ -4,6 +4,7 @@ namespace App\Http\Controllers\adminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("produit/add");
+        $get_categorie = DB::select("SELECT categorie FROM categories");
+        $get_type = DB::select("SELECT `type` FROM types");
+        $get_marque = DB::select("SELECT marque FROM marques");
+        return view("produit/add",["categorie"=>$get_categorie,"type"=>$get_type,"marque"=>$get_marque]);
     }
 
     /**
