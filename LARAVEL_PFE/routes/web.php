@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\adminController\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::resource("produit",ProduitController::class);
+Route::resource("produit",ProductController::class);
 
 Route::view("/admin","admin")->name("admin");
 Route::view("/layout","layouts");
@@ -26,7 +25,6 @@ Route::view("/commande","commande/modifier");
 Route::view("/compte","compte/add");
 Route::view("/image","image/add");
 Route::view("/marque","marque/add");
-Route::view("/produit","produit/add");
 Route::view("/type","type/add");
 Route::view("/user","user/add");
 // Route::get("/compte",[UserController::class,'compte']);
