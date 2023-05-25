@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::resource("produit",ProductController::class);
-
 Route::view("/admin","admin")->name("admin");
 Route::view("/layout","layouts");
 Route::view("/dashboard","dashboard");
@@ -28,3 +26,16 @@ Route::view("/marque","marque/add");
 Route::view("/type","type/add");
 Route::view("/user","user/add");
 // Route::get("/compte",[UserController::class,'compte']);
+
+
+//-------------Product Route------------------
+
+Route::controller(ProductController::class)->group(function (){
+    Route::get("/product_index","index");
+    Route::get("/product_create","create");
+    Route::post("/product_index","store");
+    Route::get("/product_index/{id}","show");
+    Route::get("/product_index/{id}/edit","edit");
+    Route::put("product_index/{id}","update");
+    Route::delete("/product_index/{id}","destroy");
+});
