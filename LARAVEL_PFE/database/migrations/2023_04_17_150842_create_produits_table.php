@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->float('prix');
-            $table->string('description',200);
+            $table->string('description',800);
             $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('marque_id');
