@@ -96,6 +96,33 @@
         <label for="prix">Promotion</label>
         <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the discount" name="price">
     </div>
+    <div class="form-group">
+      <label for="prix">Categorie</label>
+      <select class="form-control">
+        <option></option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+  </div>
+  <div class="form-group">
+    <label for="prix">Type</label>
+    <select class="form-control">
+      <option></option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+</div>
+<div class="form-group">
+  <label for="prix">Marque</label>
+  <select class="form-control">
+    <option></option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</div>
       <div class="form-group">
           <label for="description">Description</label>
           <textarea class="form-control" id="description" placeholder="Enter the product description" name="Description" id=""
