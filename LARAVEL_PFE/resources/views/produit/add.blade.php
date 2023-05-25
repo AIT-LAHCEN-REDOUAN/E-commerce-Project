@@ -82,18 +82,19 @@
         </div>
         <!-- ./col -->
     </div>
-    <form action="" method="GET" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" placeholder="Enter the product title">
+          <input type="text" class="form-control" id="title" placeholder="Enter the product title" name="title">
       </div>
       <div class="form-group">
           <label for="prix">Price</label>
-          <input type="text" class="form-control" id="prix" placeholder="Enter the product price">
+          <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the product price" name="price">
       </div>
       <div class="form-group">
           <label for="description">Description</label>
-          <textarea class="form-control" id="description" placeholder="Enter the product description" name="" id=""
+          <textarea class="form-control" id="description" placeholder="Enter the product description" name="Description" id=""
               cols="30" rows="10"></textarea>
       </div>
       <br>
