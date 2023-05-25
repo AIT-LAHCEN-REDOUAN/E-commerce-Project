@@ -17,14 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view("/admin","admin")->name("admin");
 Route::view("/layout","layouts");
-Route::view("/dashboard","dashboard");
-Route::view("/categorie","categorie/add");
-Route::view("/commande","commande/modifier");
-Route::view("/compte","compte/add");
-Route::view("/image","image/add");
-Route::view("/marque","marque/add");
-Route::view("/type","type/add");
-Route::view("/user","user/add");
+
 // Route::get("/compte",[UserController::class,'compte']);
 
 
