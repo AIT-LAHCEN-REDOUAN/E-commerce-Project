@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('marque_id');
+            $table->integer('quantity_stock');
             $table->foreign('categorie_id')->on('categories')->references('id')->onDelete('cascade');
             $table->foreign('type_id')->on('types')->references('id')->onDelete('cascade');
             $table->foreign('marque_id')->on('marques')->references('id')->onDelete('cascade');

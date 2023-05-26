@@ -31,6 +31,7 @@ class ProduitFactory extends Factory
             'categorie_id'=>categorie::all()->random()->id,
             'type_id'=>categorie::all()->random()->id,
             'marque_id'=>marque::all()->random()->id,
+            'quantity_stock'=>fake()->numberBetween(1,20)
         ];
     }
 }

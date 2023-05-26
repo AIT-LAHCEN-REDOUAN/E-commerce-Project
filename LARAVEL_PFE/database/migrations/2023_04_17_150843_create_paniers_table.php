@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('user_email');
             $table->unsignedBigInteger('produit_id');
             $table->integer('quantity')->default(0);
-            $table->float('total')->default(0);
             $table->foreign('user_email')->on('users')->references('email')->onDelete('cascade');
             $table->foreign('produit_id')->on('produits')->references('id')->onDelete('cascade');
             $table->timestamps();
