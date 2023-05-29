@@ -24,13 +24,13 @@ Route::view("/layout","layouts");
 //-------------Product Routes------------------
 
 Route::controller(ProductController::class)->group(function (){
-    Route::get("/product_index","index");
-    Route::get("/product_create","create");
-    Route::post("/product_index","store");
-    Route::get("/product_index/{id}","show");
-    Route::get("/product_index/{id}/edit","edit");
-    Route::put("product_index/{id}","update");
-    Route::delete("/product_index/{id}","destroy");
+    Route::get("/product_index","index")->name("product.index");
+    Route::get("/product_create","create")->name("product.create");
+    Route::post("/product_index","store")->name("product.store");
+    Route::get("/product_index/{id}","show")->name("product.show");
+    Route::get("/product_index/{id}/edit","edit")->name("product.edit");
+    Route::put("product_index/{id}","update")->name("product.update");
+    Route::delete("/product_index/{id}","destroy")->name("product.destroy");
 });
 //------------------Categorie Routes-------------------------
 Route::controller()->group(function (){
