@@ -13,6 +13,21 @@
       else { done(); }
     }
   };
+  //Initialize an array to store image file names
+  var imageFiles = [];
+  myGreatDropzone.on("succes",function(file,response){
+    imageFiles.push(file.name)
+  })
+
+  document.querySelector("#myForm").addEventListener("submit", function(e) {
+    // Get the form's action URL
+    var actionUrl = this.getAttribute("action");
+
+    // Convert the imageFiles array into a serialized JSON string
+    var imageFilesParam = "imageFiles=" + JSON.stringify(imageFiles);
+
+    // Append the imageFilesParam to the action URL
+    this.setAttribute("action", actionUrl + "?" + imageFilesParam);
 </script>
 @endsection
 @section("title")
@@ -82,7 +97,7 @@
         </div>
         <!-- ./col -->
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data" id="myForm">
       @csrf
       <div class="form-group">
           <label for="title">Title</label>
@@ -94,11 +109,11 @@
       </div>
       <div class="form-group">
         <label for="prix">Promotion</label>
-        <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the discount" name="price">
+        <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the discount" name="discount">
     </div>
     <div class="form-group">
       <label for="">Categorie</label>
-      <select class="form-control">
+      <select class="form-control" name="Categorie">
         <option>--------Choose A category--------------</option>
         @foreach ($categorie as $item)
         <option>{{$item->categorie}}</option>
@@ -107,7 +122,7 @@
   </div>
   <div class="form-group">
     <label for="">Type</label>
-    <select class="form-control">
+    <select class="form-control" name="type">
       <option>--------------Choose A type----------------</option>
        @foreach ($type as $item)
        <option>{{$item->type}}</option> 
@@ -116,7 +131,7 @@
 </div>
 <div class="form-group">
   <label for="">Marque</label>
-  <select class="form-control">
+  <select class="form-control" name="marque">
     <option>---------------Choose A marque-------------------------</option>
      @foreach ($marque as $item)
      <option>{{$item->marque}}</option> 
@@ -204,34 +219,14 @@ var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
   clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
 })
 
-//myDropzone.on("addedfile", function(file) {
-  // Hookup the start button
- // file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file) }
-//})
 
-// Update the total progress bar
-//myDropzone.on("totaluploadprogress", function(progress) {
- // document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
-//})
-
-//myDropzone.on("sending", function(file) {
-  // Show the total progress bar when upload starts
- // document.querySelector("#total-progress").style.opacity = "1"
-  // And disable the start button
-  //file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
-//})
 
 // Hide the total progress bar when nothing's uploading anymore
 myDropzone.on("queuecomplete", function(progress) {
   document.querySelector("#total-progress").style.opacity = "0"
 })
 
-// Setup the buttons for all transfers
-// The "add files" button doesn't need to be setup because the config
-// `clickable` has already been specified.
-//document.querySelector("#actions .start").onclick = function() {
-  //myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-//}
+
 document.querySelector("#actions .cancel").onclick = function() {
   myDropzone.removeAllFiles(true)
 }
