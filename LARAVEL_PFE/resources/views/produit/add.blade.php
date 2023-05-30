@@ -3,32 +3,35 @@
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
     <script>
-  Dropzone.options.myGreatDropzone = { // camelized version of the `id`
-    paramName: "file", // The name that will be used to transfer the file
-    maxFilesize: 2, // MB
-    accept: function(file, done) {
-      if (file.name == "justinbieber.jpg") {
-        done("Naha, you don't.");
-      }
-      else { done(); }
-    }
-  };
-  //Initialize an array to store image file names
-  var imageFiles = [];
-  myGreatDropzone.on("succes",function(file,response){
-    imageFiles.push(file.name)
-  })
-
-  document.querySelector("#myForm").addEventListener("submit", function(e) {
-    // Get the form's action URL
-    var actionUrl = this.getAttribute("action");
-
-    // Convert the imageFiles array into a serialized JSON string
-    var imageFilesParam = "imageFiles=" + JSON.stringify(imageFiles);
-
-    // Append the imageFilesParam to the action URL
-    this.setAttribute("action", actionUrl + "?" + imageFilesParam);
-</script>
+      Dropzone.options.myGreatDropzone = {
+        paramName: "file",
+        maxFilesize: 2,
+        accept: function(file, done) {
+          if (file.name == "justinbieber.jpg") {
+            done("Naha, you don't.");
+          } else {
+            done();
+          }
+        },
+        success: function(file, response) {
+          // Create a hidden input with the file name
+          var hiddenInput = document.createElement("input");
+          hiddenInput.type = "text";
+          hiddenInput.name = "imageFiles[]";
+          hiddenInput.value = file.name;
+    
+          // Append the hidden input to the form
+          document.getElementById("myForm").appendChild(hiddenInput);
+        }
+      };
+    
+      document.querySelector("#myForm").addEventListener("submit", function(e) {
+        var actionUrl = this.getAttribute("action");
+        var imageFilesParam = "imageFiles=" + JSON.stringify(imageFiles);
+        this.setAttribute("action", actionUrl + "?" + imageFilesParam);
+      });
+    </script>
+    
 @endsection
 @section("title")
    add Produit
@@ -228,6 +231,7 @@ var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
   previewsContainer: "#previews", // Define the container to display the previews
   clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
 })
+
 
 
 

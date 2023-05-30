@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class produit extends Model
 {
     use HasFactory;
-    protected $fillable=['id','title','prix','description','image_id','type_id','marque_id','promotion'];
+    protected $fillable=['id','title','prix','description','image_id','quantity_stock','categorie_id','type_id','marque_id','promotion'];
 
     public function categorie():BelongsTo{
         return $this->belongsTo(categorie::class);
