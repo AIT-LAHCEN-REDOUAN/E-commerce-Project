@@ -26,7 +26,7 @@ Route::view("/layout","layouts");
 Route::controller(ProductController::class)->group(function (){
     Route::get("/product_index","index")->name("product.index");
     Route::get("/product_create","create")->name("product.create");
-    Route::post("/product_index","store")->name("product.store");
+    Route::get("/product_index","store")->name("product.store");
     Route::get("/product_index/{id}","show")->name("product.show");
     Route::get("/product_index/{id}/edit","edit")->name("product.edit");
     Route::put("product_index/{id}","update")->name("product.update");

@@ -79,6 +79,7 @@
             </div>
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
+
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
@@ -97,7 +98,12 @@
         </div>
         <!-- ./col -->
     </div>
-    <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data" id="myForm">
+    @if(session()->has("success"))
+    <div class="alert alert-info">
+      <b>Added Successfully !!</b>
+    </div>
+    @endif
+    <form action="{{route('product.store')}}" method="GET" enctype="multipart/form-data" id="myForm">
       @csrf
       <div class="form-group">
           <label for="title">Title</label>
@@ -110,6 +116,10 @@
       <div class="form-group">
         <label for="prix">Promotion</label>
         <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the discount" name="discount">
+    </div>
+    <div class="form-group">
+        <label for="prix">Stock Quantity</label>
+        <input type="number" min=0 class="form-control" id="prix" placeholder="Enter the stock Quantity" name="stock">
     </div>
     <div class="form-group">
       <label for="">Categorie</label>
