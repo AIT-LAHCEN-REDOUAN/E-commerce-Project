@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PanierController;
@@ -33,3 +34,9 @@ Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::post('/compte',[UserController::class,'compte']);
 Route::resource('panier',PanierController::class);
+Route::put('panier/{id}/{method}/{user}',[PanierController::class,'update']);
+Route::post('Checkout',[CheckoutController::class,'Checkout']);
+Route::post('Checkout_validation',[CheckoutController::class,'Checkout_validation']);
+
+
+

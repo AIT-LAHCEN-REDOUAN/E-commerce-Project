@@ -14,7 +14,7 @@ class PanierController extends Controller
     public function index()
     {
         //
-       
+
     }
 
     /**
@@ -30,23 +30,24 @@ class PanierController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $panier=panier::where([['produit_id',$request->produit_id],['user_email',$request->user]])->first();
-        if(isset($panier)){
-            $panier->quantity=$panier->quantity+1;
+
+        $panier = panier::where([['produit_id', $request->produit_id], ['user_email', $request->user]])->first();
+        if (isset($panier)) {
+            $panier->quantity = $panier->quantity + 1;
             $panier->save();
+        } else {
+            $panier = panier::create([
+                'user_email' => $request->user,
+                'produit_id' => $request->produit_id,
+                'quantity' => $request->qte
+            ]);
         }
-        else
-        {
-                    $panier=panier::create([
-                        'user_email'=>$request->user,
-                        'produit_id'=>$request->produit_id
-                    ]);
-        }
-       
+
+
         return response()->json([
-            'message'=>'Added Successfully',
-            'produit'=>$panier
+            'status' => 201,
+            'message' => 'Added Successfully',
+            'data' => $request->produit_id
         ]);
     }
 
@@ -56,9 +57,9 @@ class PanierController extends Controller
     public function show($user_email)
     {
         //
-        $panier=panier::where('user_email',$user_email)->get();
+        $panier = panier::where('user_email', $user_email)->get();
         return response()->json([
-            'panier'=>new PanierCollection($panier)
+            'panier' => new PanierCollection($panier)
         ]);
     }
 
@@ -73,9 +74,20 @@ class PanierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, panier $panier)
+    public function update($cart_id, $method, $user)
     {
         //
+        $panier = panier::where([['id', $cart_id], ['user_email', $user]])->first();
+        if ($method == 'dec' and $panier->quantity > 1) {
+            $panier->quantity = $panier->quantity - 1;
+            $panier->save();
+        } else if ($method == 'inc')
+            $panier->quantity = $panier->quantity + 1;
+            $panier->save();
+
+        return response()->json([
+            'panier' => $panier
+        ]);
     }
 
     /**
@@ -84,5 +96,10 @@ class PanierController extends Controller
     public function destroy(panier $panier)
     {
         //
+        $panier = panier::find($panier->id)->first();
+        $panier->delete();
+        return response()->json([
+            'message' => 'Deleted Successfully'
+        ]);
     }
 }

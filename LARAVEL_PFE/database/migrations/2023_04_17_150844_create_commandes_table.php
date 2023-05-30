@@ -13,10 +13,16 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
-            $table->date('Date_commande');
-            $table->integer('total');
-            $table->unsignedBigInteger('panier_id');
-            $table->foreign('panier_id')->on("paniers")->references('id')->onDelete('cascade');
+            $table->integer('user_id');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('city');
+            $table->string('zipcode');
+            $table->string('payment_id')->nullable();
+            $table->string('payment_mode');
+            $table->date('Date_commande')->default(date("Y-m-d H:i:s"));
             $table->timestamps();
         });
     }
