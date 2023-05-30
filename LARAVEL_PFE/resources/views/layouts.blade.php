@@ -176,13 +176,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('category.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher Les Categorie</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('category.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ajouter Une Categorie</p>
                                     </a>
@@ -199,13 +199,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('marque.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher Les Marques</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('marque.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ajouter Une Marque</p>
                                     </a>
@@ -222,13 +222,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('product.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les produits </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('product.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ajouter un produit</p>
                                     </a>
@@ -245,38 +245,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('type.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les Types </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('type.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ajouter Un Type</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-envelope"></i>
-                                <p>
-                                    image
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Afficher les Images </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ajouter un Image</p>
                                     </a>
                                 </li>
                             </ul>
@@ -291,15 +268,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('command.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les Commandes </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ajouter un Commande</p>
                                     </a>
                                 </li>
                             </ul>
@@ -314,18 +285,11 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('compte.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les Comptes </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ajouter un Compte</p>
-                                    </a>
-                                </li>
-
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -338,15 +302,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('user.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les Users </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ajouter Un User</p>
                                     </a>
                                 </li>
                             </ul>

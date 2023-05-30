@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController\CategoryController;
 use App\Http\Controllers\adminController\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::view("/layout","layouts");
 //-------------Product Routes------------------
 
 Route::controller(ProductController::class)->group(function (){
-    
+
     Route::get("/product_index","index")->name("product.index");
     Route::get("/product_create","create")->name("product.create");
     Route::get("/product_index","store")->name("product.store");
@@ -34,7 +35,7 @@ Route::controller(ProductController::class)->group(function (){
     Route::delete("/product_index/{id}","destroy")->name("product.destroy");
 });
 //------------------Categorie Routes-------------------------
-Route::controller()->group(function (){
+Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_index","index")->name("category.index");
     Route::get("/category_create","create")->name("category.create");
     Route::post("/category_index","store")->name("category.store");
