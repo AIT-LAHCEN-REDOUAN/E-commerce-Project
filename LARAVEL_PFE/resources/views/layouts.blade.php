@@ -222,7 +222,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('product.index') }}" class="nav-link">
+                                    <a href="/product_index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher les produits </p>
                                     </a>

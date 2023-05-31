@@ -2,36 +2,7 @@
 @section("style_css")
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-    <script>
-      Dropzone.options.myGreatDropzone = {
-        paramName: "file",
-        maxFilesize: 2,
-        accept: function(file, done) {
-          if (file.name == "justinbieber.jpg") {
-            done("Naha, you don't.");
-          } else {
-            done();
-          }
-        },
-        success: function(file, response) {
-          // Create a hidden input with the file name
-          var hiddenInput = document.createElement("input");
-          hiddenInput.type = "text";
-          hiddenInput.name = "imageFiles[]";
-          hiddenInput.value = file.name;
-    
-          // Append the hidden input to the form
-          document.getElementById("myForm").appendChild(hiddenInput);
-        }
-      };
-    
-      document.querySelector("#myForm").addEventListener("submit", function(e) {
-        var actionUrl = this.getAttribute("action");
-        var imageFilesParam = "imageFiles=" + JSON.stringify(imageFiles);
-        this.setAttribute("action", actionUrl + "?" + imageFilesParam);
-      });
-    </script>
-    
+   
 @endsection
 @section("title")
    add Produit
@@ -213,36 +184,48 @@
  
       </div>
       <script>
-       Dropzone.autoDiscover = false
+   
+Dropzone.autoDiscover = false;
+// Get the template HTML and remove it from the document
+var previewNode = document.querySelector("#template");
+previewNode.id = "";
+var previewTemplate = previewNode.parentNode.innerHTML;
+previewNode.parentNode.removeChild(previewNode);
 
-// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-var previewNode = document.querySelector("#template")
-previewNode.id = ""
-var previewTemplate = previewNode.parentNode.innerHTML
-previewNode.parentNode.removeChild(previewNode)
-
-var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-  url: "/target-url", // Set the url
+var myDropzone = new Dropzone(document.body, {
+  url: "/target-url",
   thumbnailWidth: 80,
   thumbnailHeight: 80,
   parallelUploads: 20,
   previewTemplate: previewTemplate,
-  autoQueue: false, // Make sure the files aren't queued until manually added
-  previewsContainer: "#previews", // Define the container to display the previews
-  clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
-})
+  autoQueue: false,
+  previewsContainer: "#previews",
+  clickable: ".fileinput-button"
+});
 
-
-
-
-// Hide the total progress bar when nothing's uploading anymore
-myDropzone.on("queuecomplete", function(progress) {
-  document.querySelector("#total-progress").style.opacity = "0"
-})
-
+var addedFiles = []; // Array to store added files
+myDropzone.on("addedfile", function(file) {
+  addedFiles.push(file); // Add the file to the array when it's added
+  console.log(addedFiles);
+});
 
 document.querySelector("#actions .cancel").onclick = function() {
-  myDropzone.removeAllFiles(true)
-}
+  myDropzone.removeAllFiles(true);
+};
+
+document.querySelector("#myForm").addEventListener("submit", function(e) {
+  // Convert the addedFiles array to a JSON string
+  var addedFilesJSON = JSON.stringify(addedFiles);
+  
+  // Create a hidden input with the addedFiles data
+  var addedFilesInput = document.createElement("input");
+  addedFilesInput.type = "hidden";
+  addedFilesInput.name = "addedFiles";
+  addedFilesInput.value = addedFilesJSON;
+  
+  // Append the hidden input to the form
+  this.appendChild(addedFilesInput);
+});
+
       </script>    
 @endsection
