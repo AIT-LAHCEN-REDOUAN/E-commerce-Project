@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\adminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\categorie;
 use Illuminate\Http\Request;
+
+use function Ramsey\Uuid\v1;
 
 class CategoryController extends Controller
 {
@@ -12,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view("categorie/show");
+        $data=categorie::all();
+        return view("categorie/show",["data"=>$data]);
     }
 
     /**
@@ -20,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("categorie/add");
     }
 
     /**
@@ -28,7 +32,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = categorie::create([
+            "categorie"=>strip_tags($request["categorie"])
+        ]);
+        $data->save();
+        return redirect()->route("category.create")->withSuccess("Added Succesfully !!");
+        
+
     }
 
     /**
@@ -36,30 +46,36 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categorie = categorie::find($id);
+        $categorie->delete();
+        return redirect()->route("category.index")->withSuccess("Deleted Succesfully !!");
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $categorie = categorie::find($id);
+        return view("categorie/edit",["data"=>$categorie]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $category = categorie::find($id);
+        $category->categorie = strip_tags($request["categorie"]);
+        $category->save();
+        return redirect()->route("category.index")->withSuccess("Updated Successfully !!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        
     }
 }

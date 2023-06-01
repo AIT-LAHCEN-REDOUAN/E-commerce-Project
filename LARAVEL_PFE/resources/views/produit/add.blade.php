@@ -128,7 +128,7 @@
               cols="30" rows="10"></textarea>
       </div>
       <br>
-      <div class="row">
+     <div class="row">
         <div class="col-md-12">
           <div class="card card-default">
             <div class="card-header">
@@ -174,12 +174,16 @@
               </div>
             </div>
           
-          </div>
+          </div> 
+         
           <!-- /.card -->
+          <br>
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
    
-      <button type="submit" class="btn btn-primary">Submit</button>
+      
   </form>
  
       </div>
@@ -203,29 +207,7 @@ var myDropzone = new Dropzone(document.body, {
   clickable: ".fileinput-button"
 });
 
-var addedFiles = []; // Array to store added files
-myDropzone.on("addedfile", function(file) {
-  addedFiles.push(file); // Add the file to the array when it's added
-  console.log(addedFiles);
-});
 
-document.querySelector("#actions .cancel").onclick = function() {
-  myDropzone.removeAllFiles(true);
-};
-
-document.querySelector("#myForm").addEventListener("submit", function(e) {
-  // Convert the addedFiles array to a JSON string
-  var addedFilesJSON = JSON.stringify(addedFiles);
-  
-  // Create a hidden input with the addedFiles data
-  var addedFilesInput = document.createElement("input");
-  addedFilesInput.type = "hidden";
-  addedFilesInput.name = "addedFiles";
-  addedFilesInput.value = addedFilesJSON;
-  
-  // Append the hidden input to the form
-  this.appendChild(addedFilesInput);
-});
 
       </script>    
 @endsection

@@ -66,13 +66,19 @@
         </div>
         <!-- ./col -->
       </div>
-        <form action="" method=""> 
+      @if(session()->has("success"))
+    <div class="alert alert-info">
+      <b>Added Successfully !!</b>
+    </div>
+    @endif
+        <form action="{{route('category.store')}}" method="POST"> 
+          @csrf
         <div class="form-group">
-    
           <label>categorie</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie">
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="categorie">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a  class="btn btn-info" href="{{route('category.index')}}">afficher Les Categories</a>
     </form>
 </div>
 @endsection

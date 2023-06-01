@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class categorie extends Model
 {
     use HasFactory;
-
+    protected $fillable = ["categorie"];
     public function types():HasMany{
         return $this->hasMany(type::class);
     }

@@ -40,7 +40,7 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_create","create")->name("category.create");
     Route::post("/category_index","store")->name("category.store");
     Route::get("/category_index/{id}","show")->name("category.show");
-    Route::get("/category_index/{id}/edit","edit")->name("category.edit");
+    Route::get("/category_edit/{id}","edit")->name("category.edit");
     Route::put("/category_index/{id}","update")->name("category.update");
     Route::delete("/category_index/{id}","destroy")->name("category.destroy");
 });
