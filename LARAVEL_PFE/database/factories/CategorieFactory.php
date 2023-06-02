@@ -19,7 +19,7 @@ class CategorieFactory extends Factory
         return [
             //
             'categorie'=>fake()->randomElement([
-                'Alimentation PC',
+                //'Alimentation PC',
                 'Refroidissement',
                ])
         ];
