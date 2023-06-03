@@ -53,28 +53,32 @@ class TypeController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $type = type::find($id);
+        return view("type/edit",["data"=>$type]);
     }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+        $type=type::find($id);
+        $type->type=strip_tags($request["type"]);
+        $type->save();
+        return redirect()->route("type.index")->with("update_success",true);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $type = type::find($id);
+        $type->delete();
+        return redirect()->route("type.index")->with("delete_success",true);
     }
 }

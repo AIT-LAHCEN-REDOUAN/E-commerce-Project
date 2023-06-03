@@ -66,17 +66,12 @@
         </div>
         <!-- ./col -->
       </div>
-      @if(session()->has("success"))
-    <div class="alert alert-info">
-      <b>Modified Successfully !!</b>
-    </div>
-    @endif
-        <form action="{{ route('type.update', ['id'=>$data->id]) }}" method="GET"> 
+        <form action="{{route('type.update',['id'=>$data->id])}}" method="GET"> 
         @csrf
         <div class="form-group">
           <label>Type</label>
           <input value={{$data->id}} type="text" disabled class="form-control"/>
-          <input value={{$data->type}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="categorie">
+          <input value={{$data->type}} type="text" class="form-control" placeholder="Entrer Un categorie" name="type">
           <input value={{$data->created_at}} type="text" disabled class="form-control" />
           <input value={{$data->updated_at}} type="text" disabled class="form-control" />
         </div>

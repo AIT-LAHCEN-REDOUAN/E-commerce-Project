@@ -74,7 +74,7 @@
     
     @if(session()->has("update_success"))
         <div class="alert alert-info">
-          <b>Updated Successfully</b>
+          <b>Updated Successfully !!</b>
         </div>
     @endif
         <table class="table table-bordered table-responsiv w-100">

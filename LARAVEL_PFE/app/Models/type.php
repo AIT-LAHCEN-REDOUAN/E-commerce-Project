@@ -11,7 +11,7 @@ class type extends Model
 {
     
     use HasFactory;
-    protected $fillable=["type","categorie_id"];
+    protected $fillable=["id","type","categorie_id"];
 
     public function categorie():BelongsTo{
         return $this->belongsTo(categorie::class);
