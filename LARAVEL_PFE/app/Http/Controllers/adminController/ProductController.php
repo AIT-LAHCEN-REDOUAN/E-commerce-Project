@@ -77,7 +77,7 @@ class ProductController extends Controller
        foreach ($request->file('images') as $file) {
         $image = new images();
         $image->image = $file->move('Images/product',$file->getClientOriginalName());
-        $image->produit_id=1;
+        $image->produit_id=$id;
         $image->save();
     }
        return redirect()->route("product.create")->withSuccess("Added Succesfully");
