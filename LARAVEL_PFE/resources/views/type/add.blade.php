@@ -71,11 +71,11 @@
       <b>Added Successfully !!</b>
     </div>
     @endif
-        <form action="{{route('type.store')}}" method="POST"> 
+        <form action="{{route('type.store')}}" method="post"> 
           @csrf
         <div class="form-group">
           <label>type</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un type" name="type">
+          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer Un type" name="type">
         </div> 
         <select class="form-control" name="categorie" >
           @foreach ($data as $item)

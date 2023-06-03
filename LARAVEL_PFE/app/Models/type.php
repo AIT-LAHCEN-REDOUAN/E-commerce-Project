@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class type extends Model
 {
-    protected $fillable=["id,type","categorie_id"];
+    
     use HasFactory;
+    protected $fillable=["type","categorie_id"];
 
     public function categorie():BelongsTo{
         return $this->belongsTo(categorie::class);

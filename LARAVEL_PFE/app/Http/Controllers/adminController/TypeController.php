@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\adminController;
 
 use App\Http\Controllers\Controller;
-use App\Models\categorie;
 use App\Models\type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,11 +37,10 @@ class TypeController extends Controller
     {
         $categorie = strip_tags($request["categorie"]);
         $id_categorie = DB::select("SELECT id FROM categories WHERE categorie =?",[$categorie]);
-        $type = strip_tags($request["type"]);
-        
+        $type = strip_tags($request["type"]);       
         $data = type::create([
             "type"=>$type,
-            "categorie_id"=> $id_categorie
+            "categorie_id"=>$id_categorie[0]->id
         ]);
         $data->save();
         return redirect()->route("category.create")->withSuccess("Added Succesfully !!");
