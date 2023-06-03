@@ -65,7 +65,9 @@ Route::controller()->group(function (){
     Route::put("/compte_index/{id}","update")->name("compte.update");
     Route::delete("/compte_index/{id}","destroy")->name("compte.destroy");
 });
+
 //---------------------Type Routes---------------------
+
 Route::controller(TypeController::class)->group(function (){
     Route::get("/type_index","index")->name("type.index");
     Route::get("/type_create","create")->name("type.create");
@@ -76,6 +78,7 @@ Route::controller(TypeController::class)->group(function (){
 });
 
 //-------------------------User------------------------------
+
 Route::controller()->group(function (){
     Route::get("user_index","index")->name("user.index");
     Route::get("user_create","create")->name("user.create");

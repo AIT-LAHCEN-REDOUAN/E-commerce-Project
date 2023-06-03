@@ -4,8 +4,11 @@ namespace App\Http\Controllers\adminController;
 
 use App\Http\Controllers\Controller;
 use App\Models\categorie;
+use App\Models\type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+
 
 class TypeController extends Controller
 {
@@ -14,8 +17,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $get_categories = DB::select("SELECT categorie FROM categories");
-        return view("type/add",["data"=>$get_categories]);
+        $data = type::all();
+        return view("type/show",["data"=>$data]);
     }
 
     /**
@@ -23,8 +26,9 @@ class TypeController extends Controller
      */
     public function create()
     {
-        
-        
+
+        $get_categories = DB::select("SELECT categorie FROM categories");
+        return view("type/add",["data"=>$get_categories]);
     }
 
     /**
@@ -32,7 +36,16 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorie = strip_tags($request["categorie"]);
+        $id_categorie = DB::select("SELECT id FROM categories WHERE categorie =?",[$categorie]);
+        $type = strip_tags($request["type"]);
+        
+        $data = type::create([
+            "type"=>$type,
+            "categorie_id"=> $id_categorie
+        ]);
+        $data->save();
+        return redirect()->route("category.create")->withSuccess("Added Succesfully !!");
     }
 
     /**
