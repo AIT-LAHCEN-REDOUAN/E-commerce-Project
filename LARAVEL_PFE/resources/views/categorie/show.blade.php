@@ -66,10 +66,16 @@
         </div>
         <!-- ./col -->
       </div>
-      @if(session()->has("success"))
+      @if(session()->has("delete_success"))
     <div class="alert alert-info">
       <b>deleted Successfully !!</b>
     </div>
+    @endif
+    
+    @if(session()->has("update_success"))
+        <div class="alert alert-info">
+          <b>Updated Successfully</b>
+        </div>
     @endif
         <table class="table table-bordered table-responsiv w-100">
           <thead>
@@ -88,7 +94,7 @@
                   <td>{{$item->categorie}}</td>
                   <td>{{$item->created_at}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td><a href="{{ route('category.destroy', ['id'=>$item->id])}}" class="btn btn-danger">Delete</a></td>
+                  <td><a href="{{route('category.destroy',['id'=>$item->id])}}" class="btn btn-danger">Delete</a></td>
                   <td><a href="{{route('category.edit',['id'=>$item->id])}}" class="btn btn-success">Edit</a></td>
                  </tr>
              @endforeach

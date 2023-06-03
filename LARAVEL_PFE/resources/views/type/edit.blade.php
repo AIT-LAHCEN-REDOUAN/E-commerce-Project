@@ -1,6 +1,6 @@
 @extends('layouts')
 @section("title")
-   add Type
+   edit categorie
 @endsection
 @section("content")
 <div class="content-wrapper p-4" >
@@ -66,25 +66,16 @@
         </div>
         <!-- ./col -->
       </div>
-      @if(session()->has("success"))
-    <div class="alert alert-info">
-      <b>Added Successfully !!</b>
-    </div>
-    @endif
-        <form action="{{route('type.store')}}" method="post"> 
-          @csrf
+        <form action="{{route('type.update',['id'=>$data->id])}}" method="GET"> 
+        @csrf
         <div class="form-group">
-          <label>type</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer Un type" name="type">
-        </div> 
-        <select class="form-control" name="categorie" >
-          @foreach ($data as $item)
-              <option>{{$item->categorie}}</option>
-          @endforeach
-        </select>
-        <br>
+          <label>Type</label>
+          <input value={{$data->id}} type="text" disabled class="form-control"/>
+          <input value={{$data->type}} type="text" class="form-control" placeholder="Entrer Un categorie" name="type">
+          <input value={{$data->created_at}} type="text" disabled class="form-control" />
+          <input value={{$data->updated_at}} type="text" disabled class="form-control" />
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a  class="btn btn-info" href="{{route('type.index')}}">afficher Les Types</a>
     </form>
 </div>
 @endsection

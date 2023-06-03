@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\adminController\CategoryController;
+use App\Http\Controllers\adminController\marqueController;
 use App\Http\Controllers\adminController\ProductController;
+use App\Http\Controllers\adminController\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,10 +41,9 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_index","index")->name("category.index");
     Route::get("/category_create","create")->name("category.create");
     Route::post("/category_index","store")->name("category.store");
-    Route::get("/category_index/{id}","show")->name("category.show");
     Route::get("/category_edit/{id}","edit")->name("category.edit");
-    Route::put("/category_index/{id}","update")->name("category.update");
-    Route::delete("/category_index/{id}","destroy")->name("category.destroy");
+    Route::get("/category_update/{id}","update")->name("category.update");
+    Route::get("/category_index/{id}","destroy")->name("category.destroy");
 });
 //-----------------------Commande Routes--------------------------
 Route::controller()->group(function (){
@@ -64,18 +65,20 @@ Route::controller()->group(function (){
     Route::put("/compte_index/{id}","update")->name("compte.update");
     Route::delete("/compte_index/{id}","destroy")->name("compte.destroy");
 });
+
 //---------------------Type Routes---------------------
-Route::controller()->group(function (){
-    Route::get("type_index","index")->name("type.index");
-    Route::get("type_create","create")->name("type.create");
-    Route::post("type_index","store")->name("type.store");
-    Route::get("type_index/{id}","show")->name("type.show");
-    Route::get("type_index/{id}/edit","edit")->name("type.edit");
-    Route::put("type_index/{id}","update")->name("type.update");
-    Route::delete("type_index/{id}","destroy")->name("type.destroy");
+
+Route::controller(TypeController::class)->group(function (){
+    Route::get("/type_index","index")->name("type.index");
+    Route::get("/type_create","create")->name("type.create");
+    Route::post("/type_index","store")->name("type.store");
+    Route::get("/type_edit/{id}","edit")->name("type.edit");
+    Route::get("/type_update/{id}","update")->name("type.update");
+    Route::get("/type_index/{id}","destroy")->name("type.destroy");
 });
 
 //-------------------------User------------------------------
+
 Route::controller()->group(function (){
     Route::get("user_index","index")->name("user.index");
     Route::get("user_create","create")->name("user.create");
