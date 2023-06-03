@@ -71,11 +71,11 @@
       <b>Modified Successfully !!</b>
     </div>
     @endif
-        <form action="" method="POST"> 
-          @csrf
+        <form action="{{route('category.update',['id'=>$data->id])}}" method="GET"> 
+        @csrf
         <div class="form-group">
           <label>categorie</label>
-          <input value={{$data->id}} type="text" disabled class="form-control" />
+          <input value={{$data->id}} type="text" disabled class="form-control"/>
           <input value={{$data->categorie}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="categorie">
           <input value={{$data->created_at}} type="text" disabled class="form-control" />
           <input value={{$data->updated_at}} type="text" disabled class="form-control" />
