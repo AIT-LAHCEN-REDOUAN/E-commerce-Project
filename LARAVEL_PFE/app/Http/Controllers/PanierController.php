@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PanierCollection;
 use App\Models\panier;
+use App\Models\produit;
 use Illuminate\Http\Request;
 
 class PanierController extends Controller
@@ -30,7 +31,7 @@ class PanierController extends Controller
      */
     public function store(Request $request)
     {
-
+       
         $panier = panier::where([['produit_id', $request->produit_id], ['user_email', $request->user]])->first();
         if (isset($panier)) {
             $panier->quantity = $panier->quantity + 1;
@@ -43,11 +44,10 @@ class PanierController extends Controller
             ]);
         }
 
-
         return response()->json([
             'status' => 201,
             'message' => 'Added Successfully',
-            'data' => $request->produit_id
+            'panier' => $panier
         ]);
     }
 
@@ -77,10 +77,12 @@ class PanierController extends Controller
     public function update($cart_id, $method, $user)
     {
         //
+        
         $panier = panier::where([['id', $cart_id], ['user_email', $user]])->first();
         if ($method == 'dec' and $panier->quantity > 1) {
             $panier->quantity = $panier->quantity - 1;
             $panier->save();
+           
         } else if ($method == 'inc')
             $panier->quantity = $panier->quantity + 1;
             $panier->save();
