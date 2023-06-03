@@ -28,7 +28,7 @@ Route::controller(ProductController::class)->group(function (){
 
     Route::get("/product_index","index")->name("product.index");
     Route::get("/product_create","create")->name("product.create");
-    Route::get("/product_index","store")->name("product.store");
+    Route::post("/product_index","store")->name("product.store");
     Route::get("/product_index/{id}","show")->name("product.show");
     Route::get("/product_index/{id}/edit","edit")->name("product.edit");
     Route::put("product_index/{id}","update")->name("product.update");
@@ -84,4 +84,8 @@ Route::controller()->group(function (){
     Route::get("user_index/{id}/edit","edit")->name("user.edit");
     Route::put("user_index/{id}","update")->name("user.update");
     Route::delete("user_index/{id}","destroy")->name("user.destroy");
+});
+
+Route::get("test",function(){
+    return view('produit.test');
 });

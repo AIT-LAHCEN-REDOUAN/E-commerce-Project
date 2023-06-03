@@ -70,8 +70,21 @@ class ProductController extends Controller
         "promotion"=>strip_tags($request->input("discount")),
         "quantity_stock"=>strip_tags($request->input("stock"))
        ]); 
-       $data1->save();
+       $id = $data1->id;
+       $data1->save(); 
+       
+       
+       foreach ($request->file('images') as $file) {
+        $image = new images();
+        $image->image = $file->move('Images/product',$file->getClientOriginalName());
+        $image->produit_id=1;
+        $image->save();
+    }
        return redirect()->route("product.create")->withSuccess("Added Succesfully");
+    
+       
+        
+    
     }
     public function show(string $id)
     {
@@ -100,5 +113,11 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function images(){
+        return response()->json([
+            'images'=>images::all()
+        ]);
     }
 }

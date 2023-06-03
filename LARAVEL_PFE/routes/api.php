@@ -9,6 +9,7 @@ use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminController\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::resource('panier',PanierController::class);
 Route::put('panier/{id}/{method}/{user}',[PanierController::class,'update']);
 Route::post('Checkout',[CheckoutController::class,'Checkout']);
 Route::post('Checkout_validation',[CheckoutController::class,'Checkout_validation']);
+Route::get('images',[ProductController::class,'images']);
+
 
 
 
