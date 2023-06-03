@@ -71,7 +71,7 @@
       <b>Modified Successfully !!</b>
     </div>
     @endif
-        <form action="{{route('category.update',['id'=>$data->id])}}" method="GET"> 
+        <form action="{{ route('category.update', ['id'=>$data->id]) }}" method="GET"> 
         @csrf
         <div class="form-group">
           <label>categorie</label>

@@ -1,6 +1,6 @@
 @extends('layouts')
 @section("title")
-   Show types
+   edit categorie
 @endsection
 @section("content")
 <div class="content-wrapper p-4" >
@@ -66,39 +66,21 @@
         </div>
         <!-- ./col -->
       </div>
-      @if(session()->has("delete_success"))
+      @if(session()->has("success"))
     <div class="alert alert-info">
-      <b>deleted Successfully !!</b>
+      <b>Modified Successfully !!</b>
     </div>
     @endif
-    
-    @if(session()->has("update_success"))
-        <div class="alert alert-info">
-          <b>Updated Successfully</b>
+        <form action="{{ route('type.update', ['id'=>$data->id]) }}" method="GET"> 
+        @csrf
+        <div class="form-group">
+          <label>Type</label>
+          <input value={{$data->id}} type="text" disabled class="form-control"/>
+          <input value={{$data->type}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="categorie">
+          <input value={{$data->created_at}} type="text" disabled class="form-control" />
+          <input value={{$data->updated_at}} type="text" disabled class="form-control" />
         </div>
-    @endif
-        <table class="table table-bordered table-responsiv w-100">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>categorie</th>
-              <th>created_At</th>
-              <th>updated_At</th>
-              <th class="text-center" colspan="2">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-             @foreach ($data as $item)
-                 <tr>
-                  <td>{{$item->id}}</td>
-                  <td>{{$item->type}}</td>
-                  <td>{{$item->created_at}}</td>
-                  <td>{{$item->updated_at}}</td>
-                  <td><a href="{{route('type.destroy',['id'=>$item->id])}}" class="btn btn-danger">Delete</a></td>
-                  <td><a href="{{route('type.edit',['id'=>$item->id])}}" class="btn btn-success">Edit</a></td>
-                 </tr>
-             @endforeach
-            </tbody>
-        </table>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 @endsection

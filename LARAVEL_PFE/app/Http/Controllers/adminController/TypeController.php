@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\adminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TypeController extends Controller
 {
@@ -12,7 +14,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $get_categories = DB::select("SELECT categorie FROM categories");
+        return view("type/add",["data"=>$get_categories]);
     }
 
     /**
@@ -20,7 +23,8 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        
+        
     }
 
     /**

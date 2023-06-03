@@ -44,11 +44,9 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        $categorie = categorie::find($id);
-        $categorie->delete();
-        return redirect()->route("category.index")->withSuccess("Deleted Succesfully !!");
+     
     }
 
     /**
@@ -67,8 +65,7 @@ class CategoryController extends Controller
     {
         $category = categorie::find($id);
         $category->categorie = strip_tags($request["categorie"]);
-        $category->save();
-        return redirect()->route("category.index")->withSuccess("Updated Successfully !!");
+        return redirect()->route("category.index")->with("update_success",true);
     }
 
     /**
@@ -76,6 +73,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        
+        $categorie = categorie::find($id);
+        $categorie->delete();
+        return redirect()->route("category.index")->with("delete_success",true);
     }
 }
