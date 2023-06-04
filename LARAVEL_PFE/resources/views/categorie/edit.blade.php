@@ -74,10 +74,16 @@
         <form action="{{ route('category.update', ['id'=>$data->id]) }}" method="GET"> 
         @csrf
         <div class="form-group">
-          <label>categorie</label>
+          <label>id</label>
           <input value={{$data->id}} type="text" disabled class="form-control"/>
+          <br>
+          <label>Categorie</label>
           <input value={{$data->categorie}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="categorie">
+          <br>
+          <label>created_At</label>
           <input value={{$data->created_at}} type="text" disabled class="form-control" />
+          <br>
+          <label>updated_At</label>
           <input value={{$data->updated_at}} type="text" disabled class="form-control" />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

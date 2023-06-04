@@ -77,6 +77,8 @@
           <label>type</label>
           <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Entrer Un type" name="type">
         </div> 
+        <label>Categories</label>
+        <br>
         <select class="form-control" name="categorie" >
           @foreach ($data as $item)
               <option>{{$item->categorie}}</option>
