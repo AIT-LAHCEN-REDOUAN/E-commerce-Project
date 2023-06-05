@@ -71,11 +71,11 @@
       <b>Added Successfully !!</b>
     </div>
     @endif
-        <form enctype="multipart/form-data" action="{{route('marque.store')}}" method="GET"> 
+        <form enctype="multipart/form-data" action="{{route('marque.store')}}" method="post"> 
           @csrf
         <div class="form-group">
           <label>marque</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="marque">
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une marque" name="marque">
           <br>
           <div class="row">
             <div class="col-md-12">
