@@ -30,13 +30,15 @@ class marqueController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $image = new marque();
-        $image->marque = strip_tags($request["marque"]);
-        $image->image = $request->file("images")->move('Images/marque',$request->file("images")->getClientOriginalName());
-        $image->save();
-        
+        if($request->has('images')){
+        $marque = new marque();
+        $marque->marque = $request->marque;
+        $marque->image = $request->images->move('Images/marque',$request->images->getClientOriginalName());
+        $marque->save();
         return redirect()->route("marque.create")->withSuccess("Added Successfully!");        
+      
+        }
+        
     }
 
     /**
