@@ -65,6 +65,57 @@
           </div>
         </div>
         <!-- ./col -->
+        @if(session()->has("delete_success"))
+    <div class="alert alert-info">
+      <b>deleted Successfully !!</b>
+    </div>
+    @endif
+    
+    @if(session()->has("update_success"))
+        <div class="alert alert-info">
+          <b>Updated Successfully</b>
+        </div>
+    @endif
+        <table class="table table-bordered table-responsiv w-100">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>image</th>
+              <th>title</th>
+              <th>description</th>
+              <th>categorie</th>
+              <th>type</th>
+              <th>marque</th>
+              <th>quantity Stock</th>
+              <th>prix</th>
+              <th>promotion</th>
+              <th class="text-center" colspan="2">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+               @foreach($product as $item)
+               <tr>
+                 <td>{{$item->id}}</td>
+                <td>
+                  @foreach($item->image as $images)
+                     <img class="img-fluid" src="{{$images->image}}"/>
+                  @endforeach
+                 
+                </td>
+                 <td>{{$item->title}}</td>
+                 <td>{{$item->description}}</td>
+                 <td>{{$item->categorie}}</td>
+                 <td>{{$item->type}}</td>
+                 <td>{{$item->marque}}</td>
+                 <td>{{$item->quantity_stock}}</td>
+                 <td>{{$item->prix}}</td>
+                 <td>{{$item->promotion}}</td>
+                 <td><a href="" class="btn btn-danger">Delete</a></td>
+                 <td><a href="" class="btn btn-success">Edit</a></td>
+               </tr>
+               @endforeach
+            </tbody>
+        </table>
     </div>
     
 @endsection

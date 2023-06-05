@@ -31,10 +31,9 @@ Route::controller(ProductController::class)->group(function (){
     Route::get("/product_index","index")->name("product.index");
     Route::get("/product_create","create")->name("product.create");
     Route::post("/product_index","store")->name("product.store");
-    Route::get("/product_index/{id}","show")->name("product.show");
-    Route::get("/product_index/{id}/edit","edit")->name("product.edit");
-    Route::put("product_index/{id}","update")->name("product.update");
-    Route::delete("/product_index/{id}","destroy")->name("product.destroy");
+    Route::get("/product_edit/{id}","edit")->name("product.edit");
+    Route::get("/product_update/{id}","update")->name("product.update");
+    Route::get("/product_index/{id}","destroy")->name("product.destroy");
 });
 //------------------Categorie Routes-------------------------
 Route::controller(CategoryController::class)->group(function (){
@@ -63,8 +62,4 @@ Route::controller(TypeController::class)->group(function (){
     Route::get("/type_edit/{id}","edit")->name("type.edit");
     Route::get("/type_update/{id}","update")->name("type.update");
     Route::get("/type_index/{id}","destroy")->name("type.destroy");
-});
-
-Route::get("test",function(){
-    return view('produit.test');
 });

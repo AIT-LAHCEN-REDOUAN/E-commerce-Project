@@ -15,7 +15,31 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view("produit/show");
+        $product = DB::table("produits")
+        ->leftJoin("images", "produits.id", "=", "images.produit_id")
+        ->leftJoin("categories","produits.categorie_id","=","categories.id")
+        ->leftJoin("marques","produits.marque_id","=","marques.id")
+        ->leftJoin("types","produits.type_id","=","types.id")
+        ->select(
+            "produits.id",
+            "produits.title",
+            "produits.description",
+            "produits.prix",
+
+            "images.image",
+            "categories.categorie",
+            "marques.marque",
+            "types.type",
+
+            "produits.promotion",
+            "produits.quantity_stock",
+        )
+        ->distinct()
+        ->get();
+
+
+        var_dump($product);
+        //return view("produit/show",["product"=>$product]);
     }
 
     /**
