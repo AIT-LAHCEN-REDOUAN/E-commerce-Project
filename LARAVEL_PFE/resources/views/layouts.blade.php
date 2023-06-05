@@ -183,13 +183,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('marque.index') }}" class="nav-link">
+                                    <a href="{{route('marque.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Afficher Les Marques</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('marque.create') }}" class="nav-link">
+                                    <a href="{{route('marque.create')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Ajouter Une Marque</p>
                                     </a>

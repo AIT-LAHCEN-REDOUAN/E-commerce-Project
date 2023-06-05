@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class marque extends Model
 {
     use HasFactory;
+    protected $fillable = ["marque","image"];
 
     public function produits():HasMany{
         return $this->hasMany(produit::class);

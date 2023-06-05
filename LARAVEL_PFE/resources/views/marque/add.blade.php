@@ -1,6 +1,6 @@
 @extends('layouts')
 @section("title")
-   add categorie
+   add Marque
 @endsection
 @section("content")
 <div class="content-wrapper p-4" >
@@ -71,14 +71,31 @@
       <b>Added Successfully !!</b>
     </div>
     @endif
-        <form action="{{route('category.store')}}" method="POST"> 
+        <form enctype="multipart/form-data" action="{{route('marque.store')}}" method="GET"> 
           @csrf
         <div class="form-group">
           <label>marque</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="marque">
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Images</h3>
+                </div>
+                <div class="card-body">
+                <input type="file" name="images">
+                </div>
+      
+              </div>
+      
+              <!-- /.card -->
+              <br>
+            </div>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a  class="btn btn-info" href="{{route('category.index')}}">afficher Les Categories</a>
+        <a  class="btn btn-info" href="{{route('marque.index')}}">afficher Les marque</a>
     </form>
 </div>
 @endsection

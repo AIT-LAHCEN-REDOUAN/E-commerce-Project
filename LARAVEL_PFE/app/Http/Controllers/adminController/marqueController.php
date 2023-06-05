@@ -30,7 +30,13 @@ class marqueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $image = new marque();
+        $image->marque = strip_tags($request["marque"]);
+        $image->image = $request->file("images")->move('Images/marque',$request->file("images")->getClientOriginalName());
+        $image->save();
+        
+        return redirect()->route("marque.create")->withSuccess("Added Successfully!");        
     }
 
     /**
@@ -46,7 +52,8 @@ class marqueController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $marque = marque::find($id);
+        return view("marque/edit",["data"=>$marque]);
     }
 
     /**
@@ -54,7 +61,9 @@ class marqueController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $marque = marque::find($id);
+        $marque->marque = strip_tags($request["marque"]);
+        return redirect()->route("marque.index")->with("update_success",true);
     }
 
     /**
@@ -62,6 +71,8 @@ class marqueController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $marque = marque::find($id);
+        $marque->delete();
+        return redirect()->route("category.index")->with("delete_success",true);
     }
 }

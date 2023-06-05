@@ -97,9 +97,7 @@
                <tr>
                  <td>{{$item->id}}</td>
                 <td>
-                  @foreach($item->image as $images)
-                     <img class="img-fluid" src="{{$images->image}}"/>
-                  @endforeach
+                 <img class="img-fluid" src="{{$item->image}}"/> 
                  
                 </td>
                  <td>{{$item->title}}</td>

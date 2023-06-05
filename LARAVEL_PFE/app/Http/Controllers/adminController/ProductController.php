@@ -16,10 +16,10 @@ class ProductController extends Controller
     public function index()
     {
         $product = DB::table("produits")
-        ->leftJoin("images", "produits.id", "=", "images.produit_id")
-        ->leftJoin("categories","produits.categorie_id","=","categories.id")
-        ->leftJoin("marques","produits.marque_id","=","marques.id")
-        ->leftJoin("types","produits.type_id","=","types.id")
+        ->Join("images", "produits.id", "=", "images.produit_id")
+        ->Join("categories","produits.categorie_id","=","categories.id")
+        ->Join("marques","produits.marque_id","=","marques.id")
+        ->Join("types","produits.type_id","=","types.id")
         ->select(
             "produits.id",
             "produits.title",
@@ -38,8 +38,8 @@ class ProductController extends Controller
         ->get();
 
 
-        var_dump($product);
-        //return view("produit/show",["product"=>$product]);
+        //var_dump($product);
+        return view("produit/show",["product"=>$product]);
     }
 
     /**
