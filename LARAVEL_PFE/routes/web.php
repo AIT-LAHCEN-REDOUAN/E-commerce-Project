@@ -63,3 +63,12 @@ Route::controller(TypeController::class)->group(function (){
     Route::get("/type_update/{id}","update")->name("type.update");
     Route::get("/type_index/{id}","destroy")->name("type.destroy");
 });
+//------------------------Marque Routes------------------------------
+Route::controller(marqueController::class)->group(function (){
+    Route::get("/marque_index","index")->name("marque.index");
+    Route::get("/marque_create","create")->name("marque.create");
+    Route::get("/marque_index","store")->name("marque.store");
+    Route::get("/marque_edit/{id}","edit")->name("marque.edit");
+    Route::get("/marque_update/{id}","update")->name("marque.update");
+    Route::get("/marque_index/{id}","destroy")->name("marque.destroy");
+});
