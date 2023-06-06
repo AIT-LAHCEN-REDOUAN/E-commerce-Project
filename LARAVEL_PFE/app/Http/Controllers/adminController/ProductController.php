@@ -48,7 +48,7 @@ class ProductController extends Controller
     public function create()
     {
         $get_categorie = DB::select("SELECT categorie FROM categories");
-        $get_type = DB::select("SELECT `type` FROM types");
+        $get_type = DB::select("SELECT * FROM types");
         $get_marque = DB::select("SELECT marque FROM marques");
         return view("produit/add",["categorie"=>$get_categorie,"type"=>$get_type,"marque"=>$get_marque]);
     }
@@ -89,7 +89,7 @@ class ProductController extends Controller
         "prix"=>strip_tags($request->input("price")),
         "description"=>strip_tags($request->input("Description")),
         "categorie_id"=>$get_categorie_id[0]->id,
-        "type_id"=>$get_type_id[0]->id,
+        "type_id"=>$request->type,
         "marque_id"=>$get_marque_id[0]->id,
         "promotion"=>strip_tags($request->input("discount")),
         "quantity_stock"=>strip_tags($request->input("stock"))
