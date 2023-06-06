@@ -43,7 +43,7 @@ class TypeController extends Controller
             "categorie_id"=>$id_categorie[0]->id
         ]);
         $data->save();
-        return redirect()->route("category.create")->withSuccess("Added Succesfully !!");
+        return redirect()->route("type.create")->withSuccess("Added Succesfully !!");
     }
 
     /**
