@@ -4,7 +4,7 @@
 @endsection
 @section("content")
 <div class="content-wrapper p-4" >
-    <!-- <div class="row">
+     <div class="row">
         <div class="col-lg-3 col-6">
          
           <div class="small-box bg-info">
@@ -58,7 +58,7 @@
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-      </div> -->
+      </div> 
       @if(session()->has("delete_success"))
     <div class="alert alert-info">
       <b>deleted Successfully !!</b>
