@@ -100,8 +100,8 @@
                  <td>{{$item->quantity_stock}}</td>
                  <td>{{$item->prix}}</td>
                  <td>{{$item->promotion}}</td>
-                 <td><a href="" class="btn btn-danger">Delete</a></td>
-                 <td><a href="" class="btn btn-success">Edit</a></td>
+                 <td><a href="{{route('product.destroy',['id'=>$item->id]) }}" class="btn btn-danger">Delete</a></td>
+                 <td><a href="{{route('product.update',['id'=>$item->id]) }}" class="btn btn-success">Edit</a></td>
                </tr>
                @endforeach
             </tbody>

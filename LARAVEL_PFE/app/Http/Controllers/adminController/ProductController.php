@@ -134,14 +134,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    public function images(){
-        return response()->json([
-            'images'=>images::all()
-        ]);
+        
     }
 }
