@@ -65,10 +65,11 @@ class marqueController extends Controller
     public function update(Request $request,$id)
     {
         $marque = marque::find($id);
-        $marque->marque = strip_tags($request["marque"]);
+        $marque->marque = $request->marque;
         if($request->has("images")){
             $marque->image = $request->images->move('Images/marque',$request->images->getClientOriginalName());
-        }
+        };
+
         $marque->save();
         return redirect()->route("marque.index")->with("update_success",true);
     }

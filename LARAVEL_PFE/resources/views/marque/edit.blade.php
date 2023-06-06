@@ -71,8 +71,9 @@
       <b>Added Successfully !!</b>
     </div>
     @endif
-        <form action="{{route('marque.update',["id"=>$data->id])}}" method="GET"> 
+        <form action="{{route('marque.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data"> 
           @csrf
+
         <div class="form-group">
           <label>Id</label>
           <input value="{{$data->id}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une Marque" name="id" disabled>

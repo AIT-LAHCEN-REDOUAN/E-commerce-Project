@@ -71,6 +71,6 @@ Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_create","create")->name("marque.create");
     Route::post("/marque_index","store")->name("marque.store");
     Route::get("/marque_edit/{id}","edit")->name("marque.edit");
-    Route::get("/marque_update/{id}","update")->name("marque.update");
+    Route::post("/marque_update/{id}","update")->name("marque.update");
     Route::get("/marque_index/{id}","destroy")->name("marque.destroy");
 });
