@@ -81,6 +81,6 @@ class marqueController extends Controller
     {
         $marque = marque::find($id);
         $marque->delete();
-        return redirect()->route("category.index")->with("delete_success",true);
+        return redirect()->route("marque.index")->with("delete_success",true);
     }
 }

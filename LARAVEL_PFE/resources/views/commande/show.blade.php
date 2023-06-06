@@ -92,7 +92,7 @@
                     <td>{{$item->payment_mode}}</td>
                     <td>{{$item->date_commande}}</td>
                     <td>{{$item->qte}}</td>
-                    <td>{{$item->prix}}</td>
+                    <td>{{$item->total_price}}</td>
                     <td>
                         <a class="btn btn-danger" href="{{route('command.destroy',['id'=>$item->id])}}">Delete</a>
                     </td>
