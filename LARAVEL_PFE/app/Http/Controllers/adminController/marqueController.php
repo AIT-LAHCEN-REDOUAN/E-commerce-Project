@@ -55,16 +55,21 @@ class marqueController extends Controller
     public function edit(string $id)
     {
         $marque = marque::find($id);
+        //dd($marque);    
         return view("marque/edit",["data"=>$marque]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
         $marque = marque::find($id);
         $marque->marque = strip_tags($request["marque"]);
+        if($request->has("images")){
+            $marque->image = $request->images->move('Images/marque',$request->images->getClientOriginalName());
+        }
+        $marque->save();
         return redirect()->route("marque.index")->with("update_success",true);
     }
 

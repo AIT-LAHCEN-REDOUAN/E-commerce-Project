@@ -55,7 +55,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categorie = categorie::find($id);
-        return view("categorie/edit",["data"=>$categorie]);
+        //dd($categorie);
+        return view("categorie.edit",["data"=>$categorie]);
     }
 
     /**
@@ -64,7 +65,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = categorie::find($id);
-        $category->categorie = strip_tags($request["categorie"]);
+        $category->categorie= strip_tags($request["categorie"]);
+        $category->save();
         return redirect()->route("category.index")->with("update_success",true);
     }
 

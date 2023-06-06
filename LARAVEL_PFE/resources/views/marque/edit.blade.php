@@ -71,12 +71,32 @@
       <b>Added Successfully !!</b>
     </div>
     @endif
-        <form action="{{route('marque.store')}}" method="POST"> 
+        <form action="{{route('marque.update',["id"=>$data->id])}}" method="GET"> 
           @csrf
         <div class="form-group">
+          <label>Id</label>
+          <input value="{{$data->id}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une Marque" name="id" disabled>
           <label>marque</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="marque">
-          <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Un categorie" name="marque">
+          <input value="{{$data->marque}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une Marque" name="marque">
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-default">
+                <div class="card-header">
+                  <h3 class="card-title">Images</h3>
+                </div>
+                <div class="card-body">
+                <input type="file" name="images">
+                </div>
+      
+              </div>
+            </div>
+          </div>
+          <label>Created_At</label>
+          <input value="{{$data->created_at}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une Marque" name="created_at" disabled>
+          <br>
+          <label>Updated_at</label>
+          <input value="{{$data->updated_at}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="categorie" placeholder="Entrer Une Marque" name="updated_at" disabled>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a  class="btn btn-info" href="{{route('marque.index')}}">afficher Les Categories</a>

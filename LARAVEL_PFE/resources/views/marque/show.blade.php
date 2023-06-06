@@ -84,7 +84,10 @@
              @foreach ($data as $item)
                  <tr>
                   <td>{{$item->id}}</td>
-                  <td>{{$item->image}}</td>
+                  <td>
+                    <img class="img-fluid" src="{{$item->image}}"/>
+                   
+                  </td>
                   <td>{{$item->marque}}</td>
                   <td>{{$item->created_at}}</td>
                   <td>{{$item->updated_at}}</td>
