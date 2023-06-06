@@ -13,7 +13,7 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        type::factory(5)->create();
+        type::factory(10)->create();
         //
     }
 }

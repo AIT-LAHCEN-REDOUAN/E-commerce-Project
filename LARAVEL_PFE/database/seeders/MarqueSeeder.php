@@ -14,6 +14,6 @@ class MarqueSeeder extends Seeder
     public function run(): void
     {
         //
-        marque::factory(5)->create();
+        marque::factory(10)->create();
     }
 }
