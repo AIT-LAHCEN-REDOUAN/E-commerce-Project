@@ -69,7 +69,7 @@
           <b>Updated Successfully</b>
         </div>
     @endif
-        <table class="table table-bordered table-responsiv w-100">
+        <table class="table table-bordered table-responsive w-100">
           <thead>
             <tr>
               <th>id</th>

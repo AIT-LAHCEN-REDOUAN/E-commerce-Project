@@ -6,6 +6,10 @@ use App\Http\Controllers\adminController\CompteController;
 use App\Http\Controllers\adminController\marqueController;
 use App\Http\Controllers\adminController\ProductController;
 use App\Http\Controllers\adminController\TypeController;
+use App\Models\commande;
+use App\Models\compte;
+use App\Models\produit;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +25,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/",function (){
-    return view("admin");
+    $commande =  commande::count();
+    $users = compte::count();
+    $user_connected = User::count();
+    $Number = rand(15,93);
+    return view("admin",["data"=>$commande,"user"=>$users,"Number"=>$Number,"Connected"=>$user_connected]);
+
 })->name("admin");
 Route::view("/layout","layouts");
 

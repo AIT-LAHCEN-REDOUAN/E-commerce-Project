@@ -7,6 +7,7 @@ use App\Models\images;
 use App\Models\produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -100,43 +101,42 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$id)
-    {
-        $product = produit::find($id);
-        $product->title=$request->title;
-        $product->prix=$request->price;
-        $product->description=$request->Description;
-        $product->categorie_id =$request->Categorie;
-        $product->type_id = $request->type;
-        $product->marque_id = $request->marque;
-        $product->promotion = $request->discount;
-        $product->quantity_stock = $request->stock;        
-       
-        if ($request->hasFile('images')) {
-            // Delete the existing image files
-            foreach ($product->images as $image) {
-                // Assuming the image files are stored in the public directory
-                $imagePath = public_path($image->image);
-                if (file_exists($imagePath)) {
-                    unlink($imagePath);
-                }
-            }
+    public function update(Request $request, $id)
+{
+    $product = produit::find($id);
+    $product->title = $request->title;
+    $product->prix = $request->price;
+    $product->description = $request->Description;
+    $product->categorie_id = $request->Categorie;
+    $product->type_id = $request->type;
+    $product->marque_id = $request->marque;
+    $product->promotion = $request->discount;
+    $product->quantity_stock = $request->stock;
     
-            // Upload and store the new image files
-            foreach ($request->file('images') as $file) {
-                $image = new images();
-                $imageName = $file->getClientOriginalName();
-                $file->move('Images/product', $imageName);
-                $image->image = 'Images/product/' . $imageName;
-                $image->produit_id = $id;
-                $image->save();
-            }
+    if ($request->hasFile('images')) {
+        // Delete the existing image files
+        $images = images::where('produit_id', $id)->get();
+        foreach ($images as $image) {
+            // Remove the file from storage
+            Storage::delete($image->image);
+            $image->delete();
         }
-    
-        $product->save();
-        return redirect()->route("product.index")->with("update_success",true);
-    }
 
+        // Upload and store the new image files
+        foreach ($request->file('images') as $file) {
+            $image = new images();
+            $imageName = $file->getClientOriginalName();
+            $file->move('public/Images/product', $imageName);
+            $image->image = 'public/Images/product/' . $imageName;
+            $image->produit_id = $id;
+            $image->save();
+        }
+        
+    }
+    $product->save();
+    return redirect()->route("product.index")->with("update_success", true);
+
+}
     /**
      * Remove the specified resource from storage.
      */

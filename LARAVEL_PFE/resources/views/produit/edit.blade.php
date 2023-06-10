@@ -66,11 +66,6 @@
         </div>
         <!-- ./col -->
       </div>
-      @if(session()->has("success"))
-    <div class="alert alert-info">
-      <b>Added Successfully !!</b>
-    </div>
-    @endif
     <form method="GET" enctype="multipart/form-data" id="productForm" action="{{route('product.update',["id"=>$data->id])}}">
         @csrf   
         <div class="form-group">
