@@ -91,8 +91,8 @@
                   <td>{{$item->marque}}</td>
                   <td>{{$item->created_at}}</td>
                   <td>{{$item->updated_at}}</td>
-                  <td><a href="{{route('marque.destroy',['id'=>$item->id])}}" class="btn btn-danger">Delete</a></td>
-                  <td><a href="{{route('marque.edit',['id'=>$item->id])}}" class="btn btn-success">Edit</a></td>
+                  <td><a href="{{route('product.destroy',['id'=>$item->id])}}" class="btn btn-danger">Delete</a></td>
+                  <td><a href="{{route('product.edit',['id'=>$item->id])}}" class="btn btn-success">Edit</a></td>
                  </tr>
              @endforeach
             </tbody>

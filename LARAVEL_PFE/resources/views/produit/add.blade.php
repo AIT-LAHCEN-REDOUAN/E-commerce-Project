@@ -91,7 +91,7 @@ add Produit
       <select class="form-control" name="Categorie">
         <option>--------Choose A category--------------</option>
         @foreach ($categorie as $item)
-        <option>{{$item->categorie}}</option>
+        <option value="{{$item->id}}" >{{$item->categorie}}</option>
         @endforeach
       </select>
     </div>
@@ -109,7 +109,7 @@ add Produit
       <select class="form-control" name="marque">
         <option>---------------Choose A marque-------------------------</option>
         @foreach ($marque as $item)
-        <option>{{$item->marque}}</option>
+        <option value="{{$item->id}}">{{$item->marque}}</option>
         @endforeach
       </select>
     </div>

@@ -47,9 +47,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $get_categorie = DB::select("SELECT categorie FROM categories");
+        $get_categorie = DB::select("SELECT * FROM categories");
         $get_type = DB::select("SELECT * FROM types");
-        $get_marque = DB::select("SELECT marque FROM marques");
+        $get_marque = DB::select("SELECT * FROM marques");
         return view("produit/add",["categorie"=>$get_categorie,"type"=>$get_type,"marque"=>$get_marque]);
     }
 
@@ -58,39 +58,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $get_categorie_nom = strip_tags($request["Categorie"]);
-        $get_type_nom = strip_tags($request["type"]);
-        $get_marque_nom = strip_tags($request["marque"]);
-
-        $get_categorie_id = DB::select("SELECT id FROM categories WHERE `categorie`=?",[$get_categorie_nom]);
-        $get_type_id = DB::select("SELECT id FROM types WHERE `type` = ?",[$get_type_nom]);
-        $get_marque_id = DB::select("SELECT id FROM marques WHERE `marque` = ?",[$get_marque_nom]);
-    /*
-        var_dump($get_categorie_nom);
-        echo "<br>";
-        echo "<br>";
-        var_dump($get_type_nom);
-        echo "<br>";
-        echo "<br>";
-        var_dump($get_marque_nom);
-        echo "<br>";
-        echo "<br>";
-        var_dump($get_categorie_id[0]->id);
-        echo "<br>";
-        echo "<br>";
-        var_dump($get_marque_id[0]->id);
-        echo "<br>";
-        echo "<br>";
-        var_dump($get_type_id[0]->id);*/
-
-
         $data1 = produit::create([
         "title"=>strip_tags($request->input("title")),
         "prix"=>strip_tags($request->input("price")),
         "description"=>strip_tags($request->input("Description")),
-        "categorie_id"=>$get_categorie_id[0]->id,
+        "categorie_id"=>$request->Categorie,
         "type_id"=>$request->type,
-        "marque_id"=>$get_marque_id[0]->id,
+        "marque_id"=>$request->marque,
         "promotion"=>strip_tags($request->input("discount")),
         "quantity_stock"=>strip_tags($request->input("stock"))
        ]); 
@@ -110,25 +84,57 @@ class ProductController extends Controller
         
     
     }
-    public function show(string $id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $get_categorie = DB::select("SELECT * FROM categories");
+        $get_type = DB::select("SELECT * FROM types");
+        $get_marque = DB::select("SELECT * FROM marques");
+        $product = produit::find($id);
+        //dd($marque);    
+        return view("produit/edit",["data"=>$product,"categorie"=>$get_categorie,"type"=>$get_type,"marque"=>$get_marque]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+        $product = produit::find($id);
+        $product->title=$request->title;
+        $product->prix=$request->price;
+        $product->description=$request->Description;
+        $product->categorie_id =$request->Categorie;
+        $product->type_id = $request->type;
+        $product->marque_id = $request->marque;
+        $product->promotion = $request->discount;
+        $product->quantity_stock = $request->stock;        
+       
+        if ($request->hasFile('images')) {
+            // Delete the existing image files
+            foreach ($product->images as $image) {
+                // Assuming the image files are stored in the public directory
+                $imagePath = public_path($image->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+    
+            // Upload and store the new image files
+            foreach ($request->file('images') as $file) {
+                $image = new images();
+                $imageName = $file->getClientOriginalName();
+                $file->move('Images/product', $imageName);
+                $image->image = 'Images/product/' . $imageName;
+                $image->produit_id = $id;
+                $image->save();
+            }
+        }
+    
+        $product->save();
+        return redirect()->route("product.index")->with("update_success",true);
     }
 
     /**
@@ -136,6 +142,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        
+        $produit = produit::find($id);
+        $produit->delete();
+        return redirect()->route("product.index")->with("delete_success",true);
     }
 }

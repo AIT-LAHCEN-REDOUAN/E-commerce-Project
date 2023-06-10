@@ -81,7 +81,7 @@
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
                     <div class="info">
-                        <a href="#" class="d-block">ADMIN PANEL</a>
+                        <a href="{{route('admin')}}" class="d-block">ADMIN PANEL</a>
                     </div>
                 </div>
 

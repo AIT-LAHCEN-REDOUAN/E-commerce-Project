@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/",function (){
     return view("admin");
-});
+})->name("admin");
 Route::view("/layout","layouts");
 
 // Route::get("/compte",[UserController::class,'compte']);
