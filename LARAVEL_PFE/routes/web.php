@@ -4,6 +4,7 @@ use App\Http\Controllers\adminController\CategoryController;
 use App\Http\Controllers\adminController\CommandeController;
 use App\Http\Controllers\adminController\CompteController;
 use App\Http\Controllers\adminController\marqueController;
+use App\Http\Controllers\adminController\messageController;
 use App\Http\Controllers\adminController\ProductController;
 use App\Http\Controllers\adminController\TypeController;
 use App\Models\commande;
@@ -82,4 +83,11 @@ Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_edit/{id}","edit")->name("marque.edit");
     Route::post("/marque_update/{id}","update")->name("marque.update");
     Route::get("/marque_index/{id}","destroy")->name("marque.destroy");
+});
+
+//Message Routes
+
+Route::controller(messageController::class)->group(function (){
+    Route::get("/message_index","index")->name("message.index");
+    Route::get("/message_index/{id}","destroy")->name("message.destroy");
 });
