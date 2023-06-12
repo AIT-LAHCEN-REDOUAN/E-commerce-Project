@@ -15,7 +15,7 @@
 <body>
 	<div class="padding-all">
 		<div class="header">
-			<img src="{{asset('images/LOGOPFE1.png')}}" alt="">
+			<h1><img src="{{asset('images/5.png')}}" alt="">PcHub</h1>
 		</div>
 
 		<div class="design-w3l">
