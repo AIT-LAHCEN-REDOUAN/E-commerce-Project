@@ -97,15 +97,9 @@ Route::controller(messageController::class)->group(function (){
 
 Route::post('logout', [AUTHENTICATE::class, 'logout'])->name('logout');
 
-/*Route::get("/login",function(){
-   view("auth/login");
-})->name("login");
-
-Route::get("/register",function(){
-      view("auth/register");
-})->name("register");
-*/
-
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 /*Route::get("/home",function(){
    return view();
