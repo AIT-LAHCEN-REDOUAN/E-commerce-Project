@@ -11,6 +11,7 @@ use App\Models\commande;
 use App\Models\compte;
 use App\Models\produit;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,3 +92,17 @@ Route::controller(messageController::class)->group(function (){
     Route::get("/message_index","index")->name("message.index");
     Route::get("/message_index/{id}","destroy")->name("message.destroy");
 });
+
+
+/*Route::get("/login",function(){
+   view("auth/login");
+})->name("login");
+
+Route::get("/register",function(){
+      view("auth/register");
+})->name("register");
+*/
+
+Route::get("/home",function(){
+   dd(Auth::user());
+})->name("home");
