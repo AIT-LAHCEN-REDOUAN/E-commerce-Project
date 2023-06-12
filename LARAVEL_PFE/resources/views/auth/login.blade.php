@@ -15,7 +15,7 @@
 <body>
 	<div class="padding-all">
 		<div class="header">
-			<h1><img src="{{asset('images/5.png')}}" alt="">PcHub</h1>
+			<h1><img src="{{asset('images/WhatsApp Image 2023-06-12 at 18.05.05.jpg')}}" alt="">PcHub</h1>
 		</div>
 
 		<div class="design-w3l">
