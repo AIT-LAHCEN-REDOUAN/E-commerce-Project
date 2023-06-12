@@ -19,7 +19,7 @@
 
 		<div class="design-w3l">
 			<div class="mail-form-agile">
-                @if(session("status"))
+            @if(session("status"))
                 <div style="color: #155724;
                 background-color: #d4edda;
                 border-color: #c3e6cb;

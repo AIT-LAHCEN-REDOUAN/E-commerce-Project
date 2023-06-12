@@ -11,6 +11,7 @@
 <link href="{{asset('css/style1.css')}}" rel="stylesheet" type="text/css" media="all" />
 </head>
 
+
 <body>
 	<div class="padding-all">
 		<div class="header">
@@ -21,24 +22,36 @@
 			<div class="mail-form-agile">
 				<form action="{{route('login')}}" method="post">
                     @csrf
-					<input type="text" name="email" placeholder="email..." required/>
+                    <input type="text" name="email" placeholder="Email..." required/>
                     @error('email')
-                        <span style="color: crimson">
-                          <strong>
+                        <span style=" color: rgb(144, 65, 81);
+                        background-color: coral;
+                        border-color: #c3e6cb;
+                        padding: 0.75rem 1.25rem;
+                        margin-bottom: 1rem;
+                        border: 1px solid transparent;
+                        border-radius: 0.25rem;
+                        display: inline-block;
+                        margin-top: 5px;">
                             {{$message}}
-                          </strong>
                         </span>
                     @enderror
-					<input type="password" name="password" class="padding" placeholder="Password" required/>
+                    <input type="password" name="password" class="padding" placeholder="Password" required/>
                     @error('password')
-                    <span style="color: crimson">
-                        <strong>
+                        <span  style=" color: rgb(144, 65, 81);
+                        background-color: coral;
+                        border-color: #c3e6cb;
+                        padding: 0.75rem 1.25rem;
+                        margin-bottom: 1rem;
+                        border: 1px solid transparent;
+                        border-radius: 0.25rem;
+                        display: inline-block;
+                        margin-top: 5px;" >
                             {{$message}}
-                          </strong>
-                    </span>
-                @enderror
-					<input type="submit" value="Login">
-				</form>
+                        </span>
+                    @enderror
+                    <input type="submit" value="Login">
+                </form>
                 <br> 
             <a style="color: aqua ; text-decoration: underline" href="{{route('register')}}">Register</a>   
             <br>
