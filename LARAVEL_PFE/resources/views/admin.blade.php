@@ -234,6 +234,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li style="text-align: center ; position: relative; top: 100px " class="nav-item">
+                        <form method="POST" action="{{route('logout')}}">
+                            @csrf
+                            <button class="btn btn-secondary " type="submit">LOG OUT</button>
+                        </form>
+                    </li>
                 </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
