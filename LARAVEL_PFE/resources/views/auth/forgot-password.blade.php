@@ -14,12 +14,23 @@
 <body>
 	<div class="padding-all">
 		<div class="header">
-			<img src="{{asset('images/LOGOPFE1.png')}}" alt="">
+			<h1><img src="{{asset('images/5.png')}}" alt="">PcHub</h1>
 		</div>
 
 		<div class="design-w3l">
 			<div class="mail-form-agile">
-				<form action="{{route('login')}}" method="post">
+                @if(session("status"))
+                    <div style="color: #155724;
+                    background-color: #d4edda;
+                    border-color: #c3e6cb;
+                    padding: 0.75rem 1.25rem;
+                    margin-bottom: 1rem;
+                    border: 1px solid transparent;
+                    border-radius: 0.25rem;">
+                        {{session("status")}}
+                    </div>
+                @endif
+				<form action="{{route('password.request')}}" method="post">
                     @csrf
 					<input type="text" name="email" placeholder="email..." required/>
                     @error('email')
@@ -29,21 +40,13 @@
                           </strong>
                         </span>
                     @enderror
-					<input type="password" name="password" class="padding" placeholder="Password" required/>
-                    @error('password')
-                    <span style="color: crimson">
-                        <strong>
-                            {{$message}}
-                          </strong>
-                    </span>
-                @enderror
-					<input type="submit" value="Login">
+                    <br>
+                    <br>
+                    <br>
+					<input type="submit" value="Reset">
 				</form>
                 <br> 
-            <a style="color: aqua ; text-decoration: underline" href="{{route('register')}}">Register</a>   
-            <br>
-            <br>
-            <a style="color: aqua ;text-decoration: underline " href="{{route('password.request')}}">Forgot Password !!</a>     
+            <a style="color: aqua ; text-decoration: underline ;" href="{{route('register')}}">Create Account</a>    
 			</div>
             
 		</div>

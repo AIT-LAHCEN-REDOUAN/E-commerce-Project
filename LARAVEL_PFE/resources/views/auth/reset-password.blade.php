@@ -14,14 +14,15 @@
 <body>
 	<div class="padding-all">
 		<div class="header">
-			<img src="{{asset('images/LOGOPFE1.png')}}" alt="">
+			<h1><img src="{{asset('images/5.png')}}" alt="">PcHub</h1>
 		</div>
 
 		<div class="design-w3l">
 			<div class="mail-form-agile">
-				<form action="{{route('login')}}" method="post">
+				<form action="{{route('password.update')}}" method="post">
                     @csrf
-					<input type="text" name="email" placeholder="email..." required/>
+                    <input type="hidden" name="token" value="{{$request->route('token')}}" />
+					<input  type="text" name="email" placeholder="email..." value="{{$request->email}}" required/>
                     @error('email')
                         <span style="color: crimson">
                           <strong>
@@ -29,7 +30,7 @@
                           </strong>
                         </span>
                     @enderror
-					<input type="password" name="password" class="padding" placeholder="Password" required/>
+                    <input type="password" name="password" class="padding" placeholder="Password" required=""/>
                     @error('password')
                     <span style="color: crimson">
                         <strong>
@@ -37,13 +38,14 @@
                           </strong>
                     </span>
                 @enderror
-					<input type="submit" value="Login">
+                <input type="password" name="password_confirmation" class="padding" placeholder="Password Confirmation" required/>
+                    <br>
+                    <br>
+                    <br>
+					<input type="submit" value="Update">
 				</form>
                 <br> 
-            <a style="color: aqua ; text-decoration: underline" href="{{route('register')}}">Register</a>   
-            <br>
-            <br>
-            <a style="color: aqua ;text-decoration: underline " href="{{route('password.request')}}">Forgot Password !!</a>     
+            <a style="color: aqua ; text-decoration: underline ;" href="{{route('register')}}">Create Account !!</a>    
 			</div>
             
 		</div>

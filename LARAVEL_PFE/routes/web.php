@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController\AUTHENTICATE;
 use App\Http\Controllers\adminController\CategoryController;
 use App\Http\Controllers\adminController\CommandeController;
 use App\Http\Controllers\adminController\CompteController;
@@ -26,14 +27,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("/",function (){
+Route::get("/home",function (){
     $commande =  commande::count();
     $users = compte::count();
     $user_connected = User::count();
     $Number = rand(15,93);
     return view("admin",["data"=>$commande,"user"=>$users,"Number"=>$Number,"Connected"=>$user_connected]);
 
-})->name("admin");
+})->name("admin")->middleware(["auth","verified"]);
 Route::view("/layout","layouts");
 
 // Route::get("/compte",[UserController::class,'compte']);
@@ -47,7 +48,7 @@ Route::controller(ProductController::class)->group(function (){
     Route::get("/product_edit/{id}","edit")->name("product.edit");
     Route::get("/product_update/{id}","update")->name("product.update");
     Route::get("/product_index/{id}","destroy")->name("product.destroy");
-});
+})->middleware(["auth","verified"]);
 //------------------Categorie Routes-------------------------
 Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_index","index")->name("category.index");
@@ -56,17 +57,17 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_edit/{id}","edit")->name("category.edit");
     Route::get("/category_update/{id}","update")->name("category.update");
     Route::get("/category_index/{id}","destroy")->name("category.destroy");
-});
+})->middleware(["auth","verified"]);
 //-----------------------Commande Routes--------------------------
 Route::controller(CommandeController::class)->group(function (){
     Route::get("/command_index","index")->name("command.index");
     Route::get("/command_index/{id}","destroy")->name("command.destroy");
-});
+})->middleware(['auth','verified']);
 //---------------------Compte Routes---------------------------
 Route::controller(CompteController::class)->group(function (){
     Route::get("/compte_index","index")->name("compte.index");
     Route::get("/compte_index/{email}","destroy")->name("compte.destroy");
-});
+})->middleware(["auth","verified"]);
 //---------------------Type Routes---------------------
 Route::controller(TypeController::class)->group(function (){
     Route::get("/type_index","index")->name("type.index");
@@ -75,7 +76,7 @@ Route::controller(TypeController::class)->group(function (){
     Route::get("/type_edit/{id}","edit")->name("type.edit");
     Route::get("/type_update/{id}","update")->name("type.update");
     Route::get("/type_index/{id}","destroy")->name("type.destroy");
-});
+})->middleware(["auth","verified"]);
 //------------------------Marque Routes------------------------------
 Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_index","index")->name("marque.index");
@@ -84,15 +85,17 @@ Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_edit/{id}","edit")->name("marque.edit");
     Route::post("/marque_update/{id}","update")->name("marque.update");
     Route::get("/marque_index/{id}","destroy")->name("marque.destroy");
-});
+})->middleware(["auth","verified"]);
 
 //Message Routes
 
 Route::controller(messageController::class)->group(function (){
     Route::get("/message_index","index")->name("message.index");
     Route::get("/message_index/{id}","destroy")->name("message.destroy");
-});
+})->middleware(["auth","verified"]);
 
+
+Route::post('logout', [AUTHENTICATE::class, 'logout'])->name('logout');
 
 /*Route::get("/login",function(){
    view("auth/login");
@@ -103,6 +106,7 @@ Route::get("/register",function(){
 })->name("register");
 */
 
-Route::get("/home",function(){
-   dd(Auth::user());
-})->name("home");
+
+/*Route::get("/home",function(){
+   return view();
+})->name("home")->middleware(["auth","verified"]);*/
