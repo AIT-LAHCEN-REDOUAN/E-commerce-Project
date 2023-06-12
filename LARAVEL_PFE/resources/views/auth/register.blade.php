@@ -49,7 +49,7 @@
 					<input type="submit" value="Create Account">
 				</form>
                 <br> 
-            <a style="color: aqua ;" href="#">Login</a>    
+            <a style="color: aqua ; text-decoration: underline" href="{{route('login')}}">Login</a>    
 			</div>
             
 		</div>
