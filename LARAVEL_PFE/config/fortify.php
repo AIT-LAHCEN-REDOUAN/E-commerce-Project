@@ -15,6 +15,7 @@ return [
     | guards that is already present in your "auth" configuration file.
     |
     */
+
     'guard' => 'web',
 
     /*
@@ -118,10 +119,6 @@ return [
     */
 
     'views' => true,
-    'redirects' => [
-        'logout' => 'login',
-    ],
-    
 
     /*
     |--------------------------------------------------------------------------
@@ -137,14 +134,14 @@ return [
     'features' => [
         Features::registration(),
         Features::resetPasswords(),
-        Features::emailVerification(),
-        //Features::updateProfileInformation(),
-        //Features::updatePasswords(),
-        /*Features::twoFactorAuthentication([
+        // Features::emailVerification(),
+        Features::updateProfileInformation(),
+        Features::updatePasswords(),
+        Features::twoFactorAuthentication([
             'confirm' => true,
             'confirmPassword' => true,
             // 'window' => 0,
-        ])*/
+        ]),
     ],
 
 ];
