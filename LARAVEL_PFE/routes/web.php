@@ -48,7 +48,7 @@ Route::controller(ProductController::class)->group(function (){
     Route::get("/product_edit/{id}","edit")->name("product.edit");
     Route::get("/product_update/{id}","update")->name("product.update");
     Route::get("/product_index/{id}","destroy")->name("product.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 //------------------Categorie Routes-------------------------
 Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_index","index")->name("category.index");
@@ -57,17 +57,17 @@ Route::controller(CategoryController::class)->group(function (){
     Route::get("/category_edit/{id}","edit")->name("category.edit");
     Route::get("/category_update/{id}","update")->name("category.update");
     Route::get("/category_index/{id}","destroy")->name("category.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 //-----------------------Commande Routes--------------------------
 Route::controller(CommandeController::class)->group(function (){
     Route::get("/command_index","index")->name("command.index");
     Route::get("/command_index/{id}","destroy")->name("command.destroy");
-})->middleware(['auth','verified']);
+})->middleware(['auth']);
 //---------------------Compte Routes---------------------------
 Route::controller(CompteController::class)->group(function (){
     Route::get("/compte_index","index")->name("compte.index");
     Route::get("/compte_index/{email}","destroy")->name("compte.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 //---------------------Type Routes---------------------
 Route::controller(TypeController::class)->group(function (){
     Route::get("/type_index","index")->name("type.index");
@@ -76,7 +76,7 @@ Route::controller(TypeController::class)->group(function (){
     Route::get("/type_edit/{id}","edit")->name("type.edit");
     Route::get("/type_update/{id}","update")->name("type.update");
     Route::get("/type_index/{id}","destroy")->name("type.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 //------------------------Marque Routes------------------------------
 Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_index","index")->name("marque.index");
@@ -85,14 +85,14 @@ Route::controller(marqueController::class)->group(function (){
     Route::get("/marque_edit/{id}","edit")->name("marque.edit");
     Route::post("/marque_update/{id}","update")->name("marque.update");
     Route::get("/marque_index/{id}","destroy")->name("marque.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 
 //Message Routes
 
 Route::controller(messageController::class)->group(function (){
     Route::get("/message_index","index")->name("message.index");
     Route::get("/message_index/{id}","destroy")->name("message.destroy");
-})->middleware(["auth","verified"]);
+})->middleware(["auth"]);
 
 
 Route::post('logout', [AUTHENTICATE::class, 'logout'])->name('logout');
