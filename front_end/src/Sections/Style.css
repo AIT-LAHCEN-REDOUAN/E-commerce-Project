@@ -1,0 +1,5 @@
+@media all and (min-width: 992px) {
+	.navbar .nav-item .nav2{ display: none; }
+	.navbar .nav-item:hover .nav2{ display: block; }
+	.navbar .nav-item .nav2{ margin-top:0; }
+}
