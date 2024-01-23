@@ -68,11 +68,11 @@ class ProductController extends Controller
         "marque_id"=>$request->marque,
         "promotion"=>strip_tags($request->input("discount")),
         "quantity_stock"=>strip_tags($request->input("stock"))
-       ]); 
+       ]);
        $id = $data1->id;
-       $data1->save(); 
-       
-       
+       $data1->save();
+
+
        foreach ($request->file('images') as $file) {
         $image = new images();
         $image->image = $file->move('Images/product',$file->getClientOriginalName());
@@ -80,10 +80,10 @@ class ProductController extends Controller
         $image->save();
     }
        return redirect()->route("product.create")->withSuccess("Added Succesfully");
-    
-       
-        
-    
+
+
+
+
     }
     /**
      * Show the form for editing the specified resource.
@@ -94,7 +94,7 @@ class ProductController extends Controller
         $get_type = DB::select("SELECT * FROM types");
         $get_marque = DB::select("SELECT * FROM marques");
         $product = produit::find($id);
-        //dd($marque);    
+        //dd($marque);
         return view("produit/edit",["data"=>$product,"categorie"=>$get_categorie,"type"=>$get_type,"marque"=>$get_marque]);
     }
 
@@ -112,7 +112,7 @@ class ProductController extends Controller
     $product->marque_id = $request->marque;
     $product->promotion = $request->discount;
     $product->quantity_stock = $request->stock;
-    
+
     if ($request->hasFile('images')) {
         // Delete the existing image files
         $images = images::where('produit_id', $id)->get();
@@ -131,7 +131,7 @@ class ProductController extends Controller
             $image->produit_id = $id;
             $image->save();
         }
-        
+
     }
     $product->save();
     return redirect()->route("product.index")->with("update_success", true);
